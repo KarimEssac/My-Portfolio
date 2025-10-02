@@ -1,3 +1,20 @@
+window.addEventListener('load', () => {
+    const loader = document.querySelector('.page-loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 500);
+    }
+});
+
+// Prevent scrolling while loader is active
+document.addEventListener('DOMContentLoaded', () => {
+    const loader = document.querySelector('.page-loader');
+    if (loader && !loader.classList.contains('hidden')) {
+        document.body.style.overflow = 'hidden';
+    }
+});
 // Theme Management
 class ThemeManager {
     constructor() {
