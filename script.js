@@ -8,14 +8,13 @@ window.addEventListener('load', () => {
     }
 });
 
-// Prevent scrolling while loader is active
 document.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.page-loader');
     if (loader && !loader.classList.contains('hidden')) {
         document.body.style.overflow = 'hidden';
     }
 });
-// Theme Management
+
 class ThemeManager {
     constructor() {
         this.themeToggle = document.getElementById('themeToggle');
@@ -48,7 +47,6 @@ class ThemeManager {
     }
 }
 
-// Navigation Management
 class NavigationManager {
     constructor() {
         this.hamburger = document.getElementById('hamburger');
@@ -130,7 +128,6 @@ class NavigationManager {
     }
 }
 
-// Project Data
 const projectsData = {
     1: {
         name: "Skorka",
@@ -179,7 +176,6 @@ const projectsData = {
     }
 };
 
-// Project Modal Management
 let currentSlideIndex = 0;
 let currentProjectImages = [];
 
@@ -188,13 +184,9 @@ function openProjectModal(projectId) {
     const project = projectsData[projectId];
     
     if (!project) return;
-    
-    // Set project data
     document.getElementById('modalProjectName').textContent = project.name;
     document.getElementById('modalProjectDescription').textContent = project.description;
     document.getElementById('modalProjectLink').href = project.link;
-    
-    // Set tech stack
     const techStackContainer = document.getElementById('modalTechStack');
     techStackContainer.innerHTML = '';
     project.techStack.forEach(tech => {
@@ -204,18 +196,13 @@ function openProjectModal(projectId) {
         techStackContainer.appendChild(tag);
     });
     
-    // Set up carousel
     currentProjectImages = project.images;
     currentSlideIndex = 0;
     setupCarousel();
-    
-    // Set background image for modal carousel
     const carousel = document.querySelector('.modal-carousel');
     if (carousel && project.images.length > 0) {
         carousel.style.setProperty('--modal-bg-image', `url(${project.images[0]})`);
     }
-    
-    // Show modal
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -229,12 +216,8 @@ function closeProjectModal() {
 function setupCarousel() {
     const carouselContainer = document.getElementById('carouselImages');
     const indicatorsContainer = document.getElementById('carouselIndicators');
-    
-    // Clear existing content
     carouselContainer.innerHTML = '';
     indicatorsContainer.innerHTML = '';
-    
-    // Create slides
     currentProjectImages.forEach((imageSrc, index) => {
         const slide = document.createElement('div');
         slide.className = 'carousel-slide';
@@ -246,8 +229,6 @@ function setupCarousel() {
         
         slide.appendChild(img);
         carouselContainer.appendChild(slide);
-        
-        // Create indicator
         const indicator = document.createElement('div');
         indicator.className = 'indicator-dot';
         if (index === 0) indicator.classList.add('active');
@@ -273,11 +254,8 @@ function changeSlide(direction) {
     } else if (currentSlideIndex < 0) {
         currentSlideIndex = slides.length - 1;
     }
-    
     slides[currentSlideIndex].classList.add('active');
     indicators[currentSlideIndex].classList.add('active');
-    
-    // Update background image
     if (carousel && currentProjectImages[currentSlideIndex]) {
         carousel.style.setProperty('--modal-bg-image', `url(${currentProjectImages[currentSlideIndex]})`);
     }
@@ -287,24 +265,17 @@ function goToSlide(index) {
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator-dot');
     const carousel = document.querySelector('.modal-carousel');
-    
     if (slides.length === 0) return;
-    
     slides[currentSlideIndex].classList.remove('active');
     indicators[currentSlideIndex].classList.remove('active');
-    
     currentSlideIndex = index;
-    
     slides[currentSlideIndex].classList.add('active');
     indicators[currentSlideIndex].classList.add('active');
-    
-    // Update background image
     if (carousel && currentProjectImages[currentSlideIndex]) {
         carousel.style.setProperty('--modal-bg-image', `url(${currentProjectImages[currentSlideIndex]})`);
     }
 }
 
-// Keyboard navigation for modal
 document.addEventListener('keydown', (e) => {
     const modal = document.getElementById('projectModal');
     if (modal.classList.contains('active')) {
@@ -318,7 +289,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Utility Functions
 class Utils {
     static initButtonActions() {
         const primaryBtn = document.querySelector('.btn-primary');
@@ -335,13 +305,7 @@ class Utils {
             });
         }
         
-        const secondaryBtn = document.querySelector('.btn-secondary');
-        if (secondaryBtn) {
-            secondaryBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('CV download functionality coming soon!');
-            });
-        }
+        
     }
     
     static initFormSubmission() {
@@ -376,7 +340,7 @@ class Utils {
         }
     }
 }
-// Initialize
+
 document.addEventListener('DOMContentLoaded', () => {
     
     new ThemeManager();
