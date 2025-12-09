@@ -416,61 +416,81 @@
  <section class="works" id="works">
   <div class="container">
     <h2 class="section-title fadeInUp">My Works</h2>
-    <div class="works-grid">
-      <div class="work-item fadeInUp" data-project="1">
-        <div class="work-image-wrapper">
-          <img
-            src="assets/skorka/1.png"
-            alt="Skorka Footwear"
-            class="work-thumbnail"
-          />
-          <div class="work-overlay">
-            <h3>Skorka Footwear</h3>
-            <p>Full-stack shopping solution</p>
+    <div class="works-carousel">
+      <button class="carousel-nav-btn prev" onclick="moveCarousel(-1)" aria-label="Previous projects">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="work-item fadeInUp" data-project="1">
+            <div class="work-image-wrapper">
+              <img src="assets/fantazina/1.png" alt="Fantazina" class="work-thumbnail" />
+              <div class="work-overlay">
+                <h3>Fantazina</h3>
+                <p>Create Your Own Fantasy League</p>
+              </div>
+            </div>
+            <button class="work-view-btn" onclick="openProjectModal(1)">View Project</button>
           </div>
-        </div>
-        <button class="work-view-btn" onclick="openProjectModal(1)">
-          View Project
-        </button>
-      </div>
 
-      <div class="work-item fadeInUp" data-project="2">
-        <div class="work-image-wrapper">
-          <img
-            src="assets/scout/2.png"
-            alt="Scouters Management System"
-            class="work-thumbnail"
-          />
-          <div class="work-overlay">
-            <h3>Scouters Management System</h3>
-            <p>Scouts registration and activity management system</p>
+          <div class="work-item fadeInUp" data-project="2">
+            <div class="work-image-wrapper">
+              <img src="assets/skorka/1.png" alt="Skorka Footwear" class="work-thumbnail" />
+              <div class="work-overlay">
+                <h3>Skorka Footwear</h3>
+                <p>Full-stack shopping solution</p>
+              </div>
+            </div>
+            <button class="work-view-btn" onclick="openProjectModal(2)">View Project</button>
           </div>
-        </div>
-        <button class="work-view-btn" onclick="openProjectModal(2)">
-          View Project
-        </button>
-      </div>
 
-      <div class="work-item fadeInUp" data-project="3">
-        <div class="work-image-wrapper">
-          <img
-            src="assets/bank/1.png"
-            alt="Pharaonic Bank"
-            class="work-thumbnail"
-          />
-          <div class="work-overlay">
-            <h3>Pharaonic Bank</h3>
-            <p>Full-stack banking management system</p>
+          <div class="work-item fadeInUp" data-project="3">
+            <div class="work-image-wrapper">
+              <img src="assets/scout/2.png" alt="Scouters Management System" class="work-thumbnail" />
+              <div class="work-overlay">
+                <h3>Scouters Management System</h3>
+                <p>Scouts registration and activity management system</p>
+              </div>
+            </div>
+            <button class="work-view-btn" onclick="openProjectModal(3)">View Project</button>
+          </div>
+
+          <div class="work-item fadeInUp" data-project="4">
+            <div class="work-image-wrapper">
+              <img src="assets/bi_anglos/1.png" alt="Ticket Reservation System" class="work-thumbnail" />
+              <div class="work-overlay">
+                <h3>Ticket Reservation System</h3>
+                <p>Ticket reservation and total revenue system</p>
+              </div>
+            </div>
+            <button class="work-view-btn" onclick="openProjectModal(4)">View Project</button>
+          </div>
+
+          <div class="work-item fadeInUp" data-project="5">
+            <div class="work-image-wrapper">
+              <img src="assets/bank/1.png" alt="Pharaonic Bank" class="work-thumbnail" />
+              <div class="work-overlay">
+                <h3>Pharaonic Bank</h3>
+                <p>Full-stack banking management system</p>
+              </div>
+            </div>
+            <button class="work-view-btn" onclick="openProjectModal(5)">View Project</button>
           </div>
         </div>
-        <button class="work-view-btn" onclick="openProjectModal(3)">
-          View Project
-        </button>
       </div>
       
+      <button class="carousel-nav-btn next" onclick="moveCarousel(1)" aria-label="Next projects">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+      
+      <div class="carousel-dots" id="carouselDots"></div>
     </div>
   </div>
-  
 </section>
 
 <!-- Project Modal -->
