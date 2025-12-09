@@ -726,10 +726,9 @@ body {
 }
 
 .works {
-    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 6rem 0;
+    padding: 4rem 0;
     background: var(--primary-bg);
 }
 
@@ -737,7 +736,7 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    padding: 0 50px;
+    padding: 0 80px;
 }
 
 .carousel-container {
@@ -2134,10 +2133,13 @@ body {
         flex: 0 0 100%;
         max-width: 100%;
     }
+
+    .works {
+        padding: 3rem 0;
+    }
     
     .carousel-nav-btn {
-        width: 40px;
-        height: 40px;
+        display: none;
     }
     
     .carousel-nav-btn svg {
@@ -2276,7 +2278,7 @@ body {
     }
     
     .works-carousel {
-        padding: 0 30px;
+        padding: 0 20px;
     }
     
     .carousel-nav-btn {
