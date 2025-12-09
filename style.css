@@ -726,9 +726,10 @@ body {
 }
 
 .works {
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 4rem 0;
+    padding: 6rem 0;
     background: var(--primary-bg);
 }
 
@@ -736,7 +737,7 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    padding: 0 80px;
+    padding: 0 50px;
 }
 
 .carousel-container {
@@ -1983,8 +1984,8 @@ body {
     }
     
     .work-item {
-    flex: 0 0 calc(50% - 1.25rem);
-    max-width: calc(50% - 1.25rem);
+        flex: 0 0 calc(50% - 1.25rem);
+        max-width: calc(50% - 1.25rem);
     }
     
     .contact-content {
@@ -2124,14 +2125,19 @@ body {
     .skill-name {
         font-size: 0.9rem;
     }
-
-    .works {
-        padding: 3rem 0;
+    
+    .works-carousel {
+        padding: 0 40px;
     }
     
     .work-item {
         flex: 0 0 100%;
         max-width: 100%;
+    }
+    
+    .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
     }
     
     .carousel-nav-btn svg {
@@ -2141,14 +2147,6 @@ body {
     
     .work-image-wrapper {
         height: 280px;
-    }
-
-    .carousel-nav-btn {
-        display: none;
-    }
-
-    .works-carousel {
-        padding: 0 20px;
     }
     
     .modal-content {

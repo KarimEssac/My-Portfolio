@@ -431,12 +431,12 @@ class WorksCarousel {
         if (this.slidesPerView === 1) {
             itemWidth = containerWidth;
         } else if (this.slidesPerView === 2) {
-            itemWidth = (containerWidth - 2.5 * 16) / 2; // 2.5rem gap = 40px
+            itemWidth = (containerWidth - 2.5 * 16) / 2; 
         } else {
-            itemWidth = (containerWidth - 2 * 2.5 * 16) / 3; // two gaps
+            itemWidth = (containerWidth - 2 * 2.5 * 16) / 3;
         }
     
-        const gap = 2.5 * 16;
+        const gap = 2.5 * 16; 
         const translateX = -(this.currentSlide * (itemWidth + gap));
     
         this.carouselTrack.style.transform = `translateX(${translateX}px)`;
