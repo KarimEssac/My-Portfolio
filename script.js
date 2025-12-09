@@ -161,7 +161,7 @@ const projectsData = {
         ]
     },
     2: {
-        name: "Task Management App",
+        name: "Scouters Management System",
         description: "The Scouters Management System is a web application that streamlines the process of handling scout registrations, managing activities, and monitoring performance. It enables leaders to organize events, track participation, and maintain structured records, while also providing reports that support better decision-making. With its simple interface and efficient workflows, the system reduces manual effort and improves overall coordination between scouts and leaders.",
         techStack: ["PHP", "Laravel", "HTML", "WebSockets", "CSS", "JavaScript", "MySQL"],
         link: "https://github.com/KarimEssac/Scout_Management_System",
