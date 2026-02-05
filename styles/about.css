@@ -167,24 +167,19 @@
 .code-number { color: #b5cea8; }
 .code-property { color: #9cdcfe; }
 
-/* Theme-based code visibility */
-/* Hide dark-only content by default (light mode) and when explicitly in light mode */
 .code-line.dark-only,
 [data-theme="light"] .code-line.dark-only {
     display: none;
 }
 
-/* Hide light-only content in dark mode */
 [data-theme="dark"] .code-line.light-only {
     display: none;
 }
 
-/* Show dark-only content in dark mode */
 [data-theme="dark"] .code-line.dark-only {
     display: block;
 }
 
-/* Skills Subsection */
 .skills {
     padding: 4rem 0;
     background: var(--primary-bg);
