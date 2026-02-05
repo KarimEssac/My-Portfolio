@@ -1,18 +1,14 @@
-// Global variable to store projects data
 let projectsData = {};
 
-// Load projects from JSON file
 async function loadProjects() {
     try {
         const response = await fetch('projects.json');
         const data = await response.json();
         
-        // Convert array to object with id as key for backward compatibility
         data.projects.forEach(project => {
             projectsData[project.id] = project;
         });
         
-        // Render projects after loading
         renderProjects(data.projects);
         
         return data.projects;
@@ -22,18 +18,11 @@ async function loadProjects() {
     }
 }
 
-// Render projects dynamically
 function renderProjects(projects) {
     const carouselTrack = document.getElementById('carouselTrack');
     if (!carouselTrack) return;
-    
-    // Sort projects by order
     const sortedProjects = projects.sort((a, b) => a.order - b.order);
-    
-    // Clear existing content
     carouselTrack.innerHTML = '';
-    
-    // Create work items
     sortedProjects.forEach(project => {
         const workItem = document.createElement('div');
         workItem.className = 'work-item fadeInUp';
@@ -52,16 +41,12 @@ function renderProjects(projects) {
         
         carouselTrack.appendChild(workItem);
     });
-    
-    // Re-initialize carousel after rendering
     if (window.worksCarousel) {
         worksCarousel.workItems = document.querySelectorAll('.work-item');
         worksCarousel.totalSlides = worksCarousel.workItems.length;
         worksCarousel.setupDots();
         worksCarousel.updateCarousel();
     }
-    
-    // Set background images for work items
     document.querySelectorAll('.work-item').forEach(item => {
         const img = item.querySelector('.work-thumbnail');
         const wrapper = item.querySelector('.work-image-wrapper');
@@ -353,11 +338,9 @@ function moveCarousel(direction) {
     }
 }
 
-// Global variables for modal carousel
 let currentProjectImages = [];
 let currentSlideIndex = 0;
 
-// Function to open project modal (works with existing modal structure)
 function openProjectModal(projectId) {
     const modal = document.getElementById('projectModal');
     const project = projectsData[projectId];
@@ -458,23 +441,13 @@ function updateCarouselDisplay() {
     }
 }
 
-// Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {
-    // Load projects first
     await loadProjects();
-    
-    // Initialize managers
     new ThemeManager();
     new NavigationManager();
-    
-    // Initialize carousel after projects are loaded
     worksCarousel = new WorksCarousel();
-    
-    // Initialize utility functions
     Utils.initButtonActions();
     Utils.initFormSubmission();
-    
-    // Touch swipe handling for carousel
     let touchStartX = 0;
     let touchEndX = 0;
     const carouselContainer = document.querySelector('.carousel-container');
