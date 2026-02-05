@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modal-styles.css" />
   </head>
   <body>
     <nav class="navbar">
@@ -486,60 +487,7 @@
       
       <div class="carousel-container">
         <div class="carousel-track" id="carouselTrack">
-          <div class="work-item fadeInUp" data-project="1">
-            <div class="work-image-wrapper">
-              <img src="assets/fantazina/1.png" alt="Fantazina" class="work-thumbnail" />
-              <div class="work-overlay">
-                <h3>Fantazina</h3>
-                <p>Create Your Own Fantasy League</p>
-              </div>
-            </div>
-            <button class="work-view-btn" onclick="openProjectModal(1)">View Project</button>
-          </div>
-
-          <div class="work-item fadeInUp" data-project="2">
-            <div class="work-image-wrapper">
-              <img src="assets/skorka/1.png" alt="Skorka Footwear" class="work-thumbnail" />
-              <div class="work-overlay">
-                <h3>Skorka Footwear</h3>
-                <p>Full-stack shopping solution</p>
-              </div>
-            </div>
-            <button class="work-view-btn" onclick="openProjectModal(2)">View Project</button>
-          </div>
-
-          <div class="work-item fadeInUp" data-project="3">
-            <div class="work-image-wrapper">
-              <img src="assets/scout/2.png" alt="Scouters Management System" class="work-thumbnail" />
-              <div class="work-overlay">
-                <h3>Scouters Management System</h3>
-                <p>Scouts registration and activity management system</p>
-              </div>
-            </div>
-            <button class="work-view-btn" onclick="openProjectModal(3)">View Project</button>
-          </div>
-
-          <div class="work-item fadeInUp" data-project="4">
-            <div class="work-image-wrapper">
-              <img src="assets/bi_anglos/1.png" alt="Ticket Reservation System" class="work-thumbnail" />
-              <div class="work-overlay">
-                <h3>Ticket Reservation System</h3>
-                <p>Ticket reservation and total revenue system</p>
-              </div>
-            </div>
-            <button class="work-view-btn" onclick="openProjectModal(4)">View Project</button>
-          </div>
-
-          <div class="work-item fadeInUp" data-project="5">
-            <div class="work-image-wrapper">
-              <img src="assets/bank/1.png" alt="Pharaonic Bank" class="work-thumbnail" />
-              <div class="work-overlay">
-                <h3>Pharaonic Bank</h3>
-                <p>Full-stack banking management system</p>
-              </div>
-            </div>
-            <button class="work-view-btn" onclick="openProjectModal(5)">View Project</button>
-          </div>
+          <!-- Projects will be dynamically loaded here from projects.json -->
         </div>
       </div>
       
@@ -553,55 +501,6 @@
     </div>
   </div>
 </section>
-
-<!-- Project Modal -->
-<div class="project-modal" id="projectModal">
-  <div class="modal-overlay" onclick="closeProjectModal()"></div>
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeProjectModal()">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-    
-    <div class="modal-body">
-      <div class="modal-carousel">
-        <button class="carousel-btn prev" onclick="changeSlide(-1)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-        <div class="carousel-images" id="carouselImages"></div>
-        <button class="carousel-btn next" onclick="changeSlide(1)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-        <div class="carousel-indicators" id="carouselIndicators"></div>
-      </div>
-      
-      <div class="modal-info">
-        <h2 id="modalProjectName"></h2>
-        <p id="modalProjectDescription"></p>
-        
-        <div class="modal-tech-stack">
-          <h3>Tech Stack</h3>
-          <div class="tech-tags" id="modalTechStack"></div>
-        </div>
-        
-        <a href="#" id="modalProjectLink" class="btn btn-primary" target="_blank" rel="noopener">
-          Visit Project
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-            <polyline points="15 3 21 3 21 9"></polyline>
-            <line x1="10" y1="14" x2="21" y2="3"></line>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
 
     <section class="contact" id="contact">
   <div class="container">
@@ -657,7 +556,7 @@
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            <span>karimessac@gmail.com</span>
+            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd969c8f9490988e8e9c9ebd9a909c9491d39e9290"></a>karimessac@gmail.com</span>
           </div>
           <div class="contact-detail-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -726,7 +625,7 @@
             <div class="footer-column">
               <h4>Contact</h4>
               <ul>
-                <li><a href="mailto:karimessac@gmail.com">karimessac@gmail.com</a></li>
+                <li><a href="/cdn-cgi/l/email-protection#1c777d6e7571796f6f7d7f5c7b717d7570327f7371"><span class="__cf_email__" data-cfemail="7c171d0e1511190f0f1d1f3c1b111d1510521f1311">[email&#160;protected]</span></a></li>
                 <li><a href="tel:+201200989845">+20 1200989845</a></li>
                 <li>Cairo, Egypt</li>
               </ul>
@@ -777,6 +676,7 @@
     <p class="loader-text">Loading<span class="dots"></span></p>
   </div>
 </div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static.com/email-decode.min.js"></script><script src="script.js"></script>
 <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
