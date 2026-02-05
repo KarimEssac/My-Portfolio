@@ -646,9 +646,9 @@ body {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     gap: 2rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -2060,12 +2060,15 @@ body {
         width: 100%;
         height: auto;
         padding: 2rem;
+        padding-bottom: 0;
         order: 1;
-        align-items: center;
+        align-items: flex-end;
+        display: flex;
     }
-    
+
     .image-container {
-        align-self: center;
+        align-self: flex-end;
+        margin-bottom: 0;
     }
     
     [data-theme="dark"] .home-image {
