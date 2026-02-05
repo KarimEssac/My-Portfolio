@@ -1,4 +1,4 @@
-let projectsData = {};
+const projectsData = {};
 
 async function loadProjects() {
     try {

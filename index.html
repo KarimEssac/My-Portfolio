@@ -104,7 +104,7 @@
               Hey there! I'm Karim, a Full-Stack Developer passionate about turning ideas into impactful web applications that look great and work flawlessly
             </p>
             <p>
-              I specialize in building end-to-end solutions with modern technologies like Angular and Laravelâ€”delivering everything from sleek front-end interfaces to powerful back-end systems that work together seamlessly.
+              I specialize in building end-to-end solutions with modern technologies like Angular and Laravel delivering everything from sleek front-end interfaces to powerful back-end systems that work together seamlessly.
             </p>
             <div class="about-stats">
               <div class="stat-item">
@@ -582,7 +582,7 @@
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd969c8f9490988e8e9c9ebd9a909c9491d39e9290"></a><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a010b1803070f19190b092a0d070b030644090507">[email&#160;protected]</a></span>
+            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd969c8f9490988e8e9c9ebd9a909c9491d39e9290"></a><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a010b1803070f19190b092a0d070b030644090507"></a><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1972786b70747c6a6a787a597e74787075377a7674"></a>karimessac@gmail.com</span>
           </div>
           <div class="contact-detail-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -651,7 +651,7 @@
             <div class="footer-column">
               <h4>Contact</h4>
               <ul>
-                <li><a href="/cdn-cgi/l/email-protection#1c777d6e7571796f6f7d7f5c7b717d7570327f7371"><span class="__cf_email__" data-cfemail="7c171d0e1511190f0f1d1f3c1b111d1510521f1311">[email&#160;protected]</span></a></li>
+                <li><a href="/cdn-cgi/l/email-protection#1c777d6e7571796f6f7d7f5c7b717d7570327f7371"><span class="__cf_email__" data-cfemail="7c171d0e1511190f0f1d1f3c1b111d1510521f1311"></span></a>karimessac@gmail.com</li>
                 <li><a href="tel:+201200989845">+20 1200989845</a></li>
                 <li>Cairo, Egypt</li>
               </ul>
@@ -696,24 +696,51 @@
         </div>
       </div>
     </footer>
+    
+    <div id="projectModal" class="project-modal">
+      <div class="modal-overlay" onclick="closeProjectModal()"></div>
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeProjectModal()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <div class="modal-body">
+          <div class="modal-carousel">
+            <div id="carouselImages" class="carousel-images"></div>
+            <button class="carousel-btn prev" onclick="changeSlide(-1)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <button class="carousel-btn next" onclick="changeSlide(1)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <div id="carouselIndicators" class="carousel-indicators"></div>
+          </div>
+          <div class="modal-info">
+            <h2 id="modalProjectName"></h2>
+            <p id="modalProjectDescription"></p>
+            <div class="modal-tech-stack">
+              <h3>Technologies Used:</h3>
+              <div id="modalTechStack" class="tech-tags"></div>
+            </div>
+            <a id="modalProjectLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div class="page-loader">
   <div class="loader-content">
     <div class="spinner"></div>
     <p class="loader-text">Loading<span class="dots"></span></p>
   </div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static.com/email-decode.min.js"></script><script src="script.js"></script>
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "jQ1mvTq7ucM-1MMpl",
-      });
-   })();
-</script>
-    <script src="script.js"></script>
-    
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="script.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   </body>
 </html>
