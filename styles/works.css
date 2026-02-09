@@ -334,6 +334,16 @@
     overflow: hidden;
 }
 
+@media (max-width: 768px) {
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 .modal-carousel {
     position: relative;
     background: #1a1a1a;
