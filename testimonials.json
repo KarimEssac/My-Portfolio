@@ -1,0 +1,30 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "order": 1,
+      "clientName": "John B.",
+      "platform": "Mostaql",
+      "projectTitle": "تطوير وتحسين نظام بحث ذكي",
+      "category": "Web development",
+      "rating": 5,
+      "completedIn": "3 months, 1 day",
+      "summary": "Professional communication, strong follow-up, high-quality delivery, and a client who recommended working with Karim again.",
+      "quote": "Do not hesitate to contact Karim. He can deliver excellent work in the freelance field.",
+      "image": "testimonials/1.png"
+    },
+    {
+      "id": 2,
+      "order": 2,
+      "clientName": "Amr A.",
+      "platform": "Mostaql",
+      "projectTitle": "رسم الإجراءات باستخدام برنامج الفيزيو",
+      "category": "Process documentation",
+      "rating": 5,
+      "completedIn": "2 months, 18 days",
+      "summary": "A client review highlighting commitment, professionalism, patience, and smooth collaboration during the full project period.",
+      "quote": "Karim is an example of ethics, commitment, and professional work.",
+      "image": "testimonials/2.png"
+    }
+  ]
+}

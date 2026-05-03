@@ -29,6 +29,9 @@
             <a href="#works" class="nav-link">Works</a>
           </li>
           <li class="nav-item">
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+          </li>
+          <li class="nav-item">
             <a href="#contact" class="nav-link">Contact</a>
           </li>
         </ul>
@@ -495,32 +498,103 @@
 
 
     
- <section class="works" id="works">
-  <div class="container">
-    <h2 class="section-title fadeInUp">My Works</h2>
-    <div class="works-carousel">
-      <button class="carousel-nav-btn prev" onclick="moveCarousel(-1)" aria-label="Previous projects">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-      
-      <div class="carousel-container">
-        <div class="carousel-track" id="carouselTrack">
-          <!-- Projects will be dynamically loaded here from projects.json -->
+    <section class="works" id="works">
+      <div class="container works-shell">
+        <div class="works-header fadeInUp">
+          <div class="works-heading">
+            <span class="works-eyebrow">Selected builds</span>
+            <h2 class="section-title works-title">My Works</h2>
+            <p>
+              A closer look at the platforms, stores, dashboards, and systems I have built from interface to database.
+            </p>
+          </div>
+          <div class="works-stats" aria-label="Portfolio project summary">
+            <div class="works-stat">
+              <span class="works-stat-icon" aria-hidden="true">01</span>
+              <div>
+                <strong id="worksTotalCount">6</strong>
+                <span>Shipped projects</span>
+                <small>Case studies ready</small>
+              </div>
+            </div>
+            <div class="works-stat">
+              <span class="works-stat-icon" aria-hidden="true">02</span>
+              <div>
+                <strong>Full</strong>
+                <span>Stack delivery</span>
+                <small>Frontend to database</small>
+              </div>
+            </div>
+            <div class="works-stat">
+              <span class="works-stat-icon" aria-hidden="true">03</span>
+              <div>
+                <strong>UI</strong>
+                <span>+ API systems</span>
+                <small>Interfaces that operate</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="works-toolbar fadeInUp">
+          <div class="works-filter-group" id="worksFilters" aria-label="Project filters"></div>
+          <span class="works-counter" id="worksCounter"></span>
+        </div>
+
+        <div class="works-showcase">
+          <article class="work-spotlight fadeInUp" id="workSpotlight" aria-live="polite"></article>
+          <div class="works-grid" id="carouselTrack">
+            <!-- Projects will be dynamically loaded here from projects.json -->
+          </div>
         </div>
       </div>
-      
-      <button class="carousel-nav-btn next" onclick="moveCarousel(1)" aria-label="Next projects">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
-      
-      <div class="carousel-dots" id="carouselDots"></div>
-    </div>
-  </div>
-</section>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+      <div class="container testimonials-shell">
+        <div class="testimonials-header fadeInUp">
+          <div class="testimonials-heading">
+            <span class="testimonials-eyebrow">Client proof</span>
+            <h2 class="section-title testimonials-title">Testimonials</h2>
+            <p>
+              Real feedback from delivered work, kept close to the original screenshots so the words still feel grounded.
+            </p>
+          </div>
+          <div class="testimonials-summary" aria-label="Testimonials summary">
+            <div>
+              <strong id="testimonialTotalCount">2</strong>
+              <span>Verified reviews</span>
+            </div>
+            <div>
+              <strong id="testimonialAverageRating">5.0</strong>
+              <span>Average rating</span>
+            </div>
+            <div>
+              <strong>Mostaql</strong>
+              <span>Source platform</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials-stage fadeInUp">
+          <aside class="testimonials-intro">
+            <span class="testimonials-intro-mark">"</span>
+            <h3>Trust, shown in the client’s own words.</h3>
+            <p>
+              Each review card includes the platform, project context, client name, rating, and the original captured testimonial.
+            </p>
+            <div class="testimonials-orbit" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </aside>
+          <div class="testimonials-grid" id="testimonialsGrid">
+            <!-- Testimonials will be dynamically loaded here from testimonials.json -->
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="contact" id="contact">
   <div class="container">
@@ -638,6 +712,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#works">Works</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
             </div>
@@ -685,7 +760,7 @@
         </div>
         
         <div class="footer-bottom">
-          <p>&copy; 2025 Karim Essac. All rights reserved.</p>
+          <p>&copy; 2026 Karim Essac. All rights reserved.</p>
           <p>Designed & Developed with <span class="heart">❤️</span> by Karim Essac</p>
         </div>
       </div>
@@ -701,6 +776,10 @@
         </button>
         <div class="modal-body">
           <div class="modal-carousel">
+            <div class="modal-gallery-badge">
+              <span>Project gallery</span>
+              <strong id="modalImageCount">01 / 01</strong>
+            </div>
             <div id="carouselImages" class="carousel-images"></div>
             <button class="carousel-btn prev" onclick="changeSlide(-1)">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -715,15 +794,56 @@
             <div id="carouselIndicators" class="carousel-indicators"></div>
           </div>
           <div class="modal-info">
+            <div class="modal-project-kicker">
+              <span id="modalProjectCategory"></span>
+              <span id="modalProjectPosition"></span>
+            </div>
             <h2 id="modalProjectName"></h2>
-            <p id="modalProjectDescription"></p>
+            <p id="modalProjectResult" class="modal-project-result"></p>
+            <div class="modal-insight-grid">
+              <div class="modal-insight">
+                <span>Focus</span>
+                <strong id="modalProjectFocus"></strong>
+              </div>
+              <div class="modal-insight">
+                <span>Type</span>
+                <strong id="modalProjectType"></strong>
+              </div>
+              <div class="modal-insight">
+                <span>Screens</span>
+                <strong id="modalProjectScreens"></strong>
+              </div>
+            </div>
+            <div class="modal-story">
+              <h3>Project Overview</h3>
+              <p id="modalProjectDescription"></p>
+            </div>
             <div class="modal-tech-stack">
-              <h3>Technologies Used:</h3>
+              <h3>Technologies Used</h3>
               <div id="modalTechStack" class="tech-tags"></div>
             </div>
-            <a id="modalProjectLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Project</a>
+            <div class="modal-actions">
+              <a id="modalProjectLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Project</a>
+              <span id="modalProjectAvailability" class="modal-project-availability"></span>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div id="testimonialViewer" class="testimonial-viewer" aria-hidden="true">
+      <div class="testimonial-viewer-overlay" onclick="closeTestimonialViewer()"></div>
+      <div class="testimonial-viewer-content" role="dialog" aria-modal="true" aria-label="Testimonial image preview">
+        <button class="testimonial-viewer-close" type="button" onclick="closeTestimonialViewer()" aria-label="Close testimonial preview">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <div class="testimonial-viewer-meta">
+          <span id="testimonialViewerPlatform"></span>
+          <strong id="testimonialViewerClient"></strong>
+        </div>
+        <img id="testimonialViewerImage" src="" alt="" />
       </div>
     </div>
     

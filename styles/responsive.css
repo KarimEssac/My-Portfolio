@@ -156,32 +156,6 @@
         font-size: 0.9rem;
     }
     
-    .works-carousel {
-        padding: 0 40px;
-    }
-    
-    .work-item {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .works {
-        padding: 3rem 0;
-    }
-    
-    .carousel-nav-btn {
-        display: none;
-    }
-    
-    .carousel-nav-btn svg {
-        width: 20px;
-        height: 20px;
-    }
-    
-    .work-image-wrapper {
-        height: 280px;
-    }
-    
     .modal-content {
         max-height: 90vh;
         margin: 1rem;
@@ -307,24 +281,6 @@
     .skill-icon {
         width: 50px;
         height: 50px;
-    }
-    
-    .works-carousel {
-        padding: 0 20px;
-    }
-    
-    .carousel-nav-btn {
-        width: 35px;
-        height: 35px;
-    }
-    
-    .carousel-nav-btn svg {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .work-image-wrapper {
-        height: 250px;
     }
     
     .modal-content {

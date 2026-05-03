@@ -18,7 +18,12 @@
         "assets/fantazina/6.png",
         "assets/fantazina/7.png",
         "assets/fantazina/8.png"
-      ]
+      ],
+      "category": "Sports Platform",
+      "filter": "platforms",
+      "focus": "League logic, scoring, OTP, tickets",
+      "result": "A complete fantasy ecosystem with league ownership, player points, dashboards, and secure account flows.",
+      "accent": "#4867b1"
     },
     {
       "id": 2,
@@ -37,7 +42,12 @@
         "https://i.ibb.co/sp02pY1X/6.png",
         "https://i.ibb.co/Xrx83kbN/5.jpg",
         "https://i.ibb.co/XrD13pJ0/7.png"
-      ]
+      ],
+      "category": "Commerce",
+      "filter": "commerce",
+      "focus": "Catalog, cart, orders, admin flow",
+      "result": "A footwear shopping experience shaped around browsing, checkout, product control, and order management.",
+      "accent": "#b65f43"
     },
     {
       "id": 3,
@@ -54,7 +64,12 @@
         "assets/lens-and-light/3.png",
         "assets/lens-and-light/4.png",
         "assets/lens-and-light/5.png"
-      ]
+      ],
+      "category": "Commerce",
+      "filter": "commerce",
+      "focus": "Next.js storefront, Laravel API, auth",
+      "result": "A polished photography gear store pairing a modern front end with secure Laravel-backed services.",
+      "accent": "#2f7d68"
     },
     {
       "id": 4,
@@ -73,7 +88,12 @@
         "https://i.ibb.co/BKCBTdMr/5.png",
         "https://i.ibb.co/R4VvnRXQ/1.png",
         "https://i.ibb.co/7x6nKmjs/6.png"
-      ]
+      ],
+      "category": "Management System",
+      "filter": "management",
+      "focus": "Registration, events, reports, records",
+      "result": "A coordination system for registrations, activity tracking, structured records, and leader reports.",
+      "accent": "#7b5bb8"
     },
     {
       "id": 5,
@@ -88,7 +108,12 @@
         "assets/bi_anglos/1.png",
         "assets/bi_anglos/2.png",
         "assets/bi_anglos/3.png"
-      ]
+      ],
+      "category": "Reservation System",
+      "filter": "management",
+      "focus": "Seat maps, bookings, revenue views",
+      "result": "An event reservation workflow with availability control, ticketing, venue setup, and sales reporting.",
+      "accent": "#bd8b28"
     },
     {
       "id": 6,
@@ -100,11 +125,41 @@
       "link": "",
       "thumbnail": "assets/bank/1.png",
       "images": [
-        "https://i.ibb.co/KxgH7FFQ/1.png",
-        "https://i.ibb.co/4Sxc11yG/4.png",
-        "https://i.ibb.co/3R4d4V8r/2.png",
-        "https://i.ibb.co/yWDbTXR9/3.png"
-      ]
+        "assets/bank/1.png",
+        "assets/bank/2.png",
+        "assets/bank/3.png",
+        "assets/bank/4.png",
+        "assets/bank/5.png",
+        "assets/bank/6.png"
+      ],
+      "category": "Finance System",
+      "filter": "finance",
+      "focus": "Accounts, transfers, balances, admin tools",
+      "result": "A student banking simulation covering secure access, account operations, transfers, and admin oversight.",
+      "accent": "#3d7d99"
+    },
+    {
+      "id": 7,
+      "order": 7,
+      "name": "Sweden",
+      "shortDescription": "Chrome Extension",
+      "description": "Sweden enhances your ADS-B Exchange experience by overlaying essential aviation navigation data directly onto the live traffic map.\nFeatures include:\n\nWaypoints & Fixes — See named intersections and nav fixes plotted alongside live aircraft\nNDBs (Non-Directional Beacons) — Visualize ground-based radio navigation stations\nMOAs (Military Operations Areas) — Know when aircraft are entering or operating near restricted airspace\nFBOs (Fixed Base Operators) — Identify fuel, service, and general aviation stop locations\nVFR Waypoints — Spot visual flight reference points used by low-altitude pilots\n\nWhether you're a seasoned aviation enthusiast or just starting to explore ADS-B tracking, Sweden helps you understand the \"why\" behind each aircraft's route — turning raw flight data into meaningful navigation context.\nPerfect for:\n\nADS-B hobbyists and planespotters\nStudent pilots studying real-world routing\nAviation enthusiasts who want to guess and decode ATC instructions\nAnyone who wants a richer, more informative ADS-B Exchange map",
+      "techStack": ["JavaScript", "HTML", "CSS", "Chrome Extension"],
+      "link": "",
+      "thumbnail": "assets/Sweden/1.png",
+      "images": [
+        "assets/Sweden/1.png",
+        "assets/Sweden/2.png",
+        "assets/Sweden/3.png",
+        "assets/Sweden/4.png",
+        "assets/Sweden/5.png",
+        "assets/Sweden/6.png"
+      ],
+      "category": "Chrome Extension",
+      "filter": "extensions",
+      "focus": "Aviation data overlay, map context",
+      "result": "An extension that turns raw flight data into meaningful navigation context.",
+      "accent": "#e6a15c"
     }
   ]
 }
