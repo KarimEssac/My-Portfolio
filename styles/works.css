@@ -5,18 +5,12 @@
 .works {
     position: relative;
     overflow: hidden;
-    padding: 7rem 0;
-    background:
-        linear-gradient(135deg, rgba(186, 199, 207, 0.16) 0 1px, transparent 1px 32px),
-        linear-gradient(90deg, transparent 0%, rgba(186, 199, 207, 0.16) 48%, transparent 100%),
-        var(--primary-bg);
+    padding: 4rem 0 7rem;
+    background: var(--patterned-section-bg);
 }
 
 [data-theme="dark"] .works {
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 32px),
-        linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.04) 48%, transparent 100%),
-        var(--primary-bg);
+    background: var(--patterned-section-bg);
 }
 
 .works::before {
@@ -24,15 +18,11 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        linear-gradient(180deg, var(--primary-bg) 0%, transparent 20%, transparent 80%, var(--primary-bg) 100%),
-        repeating-linear-gradient(90deg, transparent 0 120px, rgba(33, 47, 67, 0.04) 120px 121px);
+    background: var(--patterned-section-overlay);
 }
 
 [data-theme="dark"] .works::before {
-    background:
-        linear-gradient(180deg, var(--primary-bg) 0%, transparent 20%, transparent 80%, var(--primary-bg) 100%),
-        repeating-linear-gradient(90deg, transparent 0 120px, rgba(255, 255, 255, 0.035) 120px 121px);
+    background: var(--patterned-section-overlay);
 }
 
 .works-shell {

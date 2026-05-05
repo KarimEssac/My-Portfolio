@@ -135,7 +135,7 @@ function renderTestimonials(testimonials) {
     }
 
     testimonialsGrid.innerHTML = allTestimonials.map((testimonial, index) => `
-        <article class="testimonial-card ${index === 0 ? 'is-featured' : ''}" data-testimonial="${testimonial.id}">
+        <article class="testimonial-card ${index === 0 ? 'is-featured' : ''}" data-testimonial="${testimonial.id}" data-platform="${escapeHTML((testimonial.platform || '').toLowerCase())}">
             <div class="testimonial-card-top">
                 <span class="testimonial-platform">${escapeHTML(testimonial.platform)}</span>
                 <span class="testimonial-number">${String(index + 1).padStart(2, '0')}</span>
@@ -233,7 +233,7 @@ function renderWorksCards() {
                 aria-label="Open ${escapeHTML(project.name)} project"
             >
                 <div class="work-image-wrapper">
-                    <img src="${escapeHTML(project.thumbnail)}" alt="${escapeHTML(project.name)}" class="work-thumbnail" loading="eager" />
+                    <img src="${escapeHTML(project.thumbnail)}" alt="${escapeHTML(project.name)}" class="work-thumbnail" loading="lazy" />
                     <span class="work-index">${String(index + 1).padStart(2, '0')}</span>
                     <span class="work-category">${escapeHTML(meta.category)}</span>
                 </div>
@@ -455,6 +455,25 @@ class NavigationManager {
         } else {
             navbar.style.background = 'var(--primary-bg)';
             navbar.style.boxShadow = 'none';
+        }
+
+        // Active section highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const scrollY = window.scrollY + 120;
+        let currentId = '';
+
+        sections.forEach(section => {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            if (scrollY >= top && scrollY < top + height) {
+                currentId = section.getAttribute('id');
+            }
+        });
+
+        if (currentId) {
+            this.navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+            });
         }
     }
     
@@ -711,4 +730,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     new NavigationManager();
     Utils.initButtonActions();
     Utils.initFormSubmission();
+
+    // Experience accordion
+    document.querySelectorAll('.experience-item').forEach(item => {
+        const card = item.querySelector('.experience-card');
+        if (!card) return;
+        card.addEventListener('click', () => {
+            const isOpen = item.classList.contains('is-open');
+            // Close all
+            document.querySelectorAll('.experience-item.is-open').forEach(openItem => {
+                openItem.classList.remove('is-open');
+            });
+            // Toggle clicked (if it was closed, open it)
+            if (!isOpen) {
+                item.classList.add('is-open');
+            }
+        });
+    });
 });

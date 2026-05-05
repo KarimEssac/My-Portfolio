@@ -205,3 +205,7 @@
     margin: 0 auto;
     height: auto;
 }
+
+[data-theme="dark"] .home-buttons {
+    justify-content: center;
+}

@@ -9,6 +9,13 @@
     --border-color: #BAC7CF;
     --shadow-light: rgba(33, 47, 67, 0.1);
     --shadow-medium: rgba(33, 47, 67, 0.2);
+    --patterned-section-bg:
+        linear-gradient(135deg, rgba(186, 199, 207, 0.16) 0 1px, transparent 1px 32px),
+        linear-gradient(90deg, transparent 0%, rgba(186, 199, 207, 0.16) 48%, transparent 100%),
+        var(--primary-bg);
+    --patterned-section-overlay:
+        linear-gradient(180deg, var(--primary-bg) 0%, transparent 20%, transparent 80%, var(--primary-bg) 100%),
+        repeating-linear-gradient(90deg, transparent 0 120px, rgba(33, 47, 67, 0.04) 120px 121px);
     --code-bg: #1e1e1e;
     --code-text: #d4d4d4;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -23,6 +30,13 @@
     --border-color: #3D3D3D;
     --shadow-light: rgba(0, 0, 0, 0.3);
     --shadow-medium: rgba(0, 0, 0, 0.5);
+    --patterned-section-bg:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 32px),
+        linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.04) 48%, transparent 100%),
+        var(--primary-bg);
+    --patterned-section-overlay:
+        linear-gradient(180deg, var(--primary-bg) 0%, transparent 20%, transparent 80%, var(--primary-bg) 100%),
+        repeating-linear-gradient(90deg, transparent 0 120px, rgba(255, 255, 255, 0.035) 120px 121px);
     --code-bg: #0d1117;
 }
 
