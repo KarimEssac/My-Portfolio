@@ -11,6 +11,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/style.css" />
+    <script>
+      // Apply saved theme instantly to prevent flash of light theme
+      (function() {
+        var t = localStorage.getItem('preferredTheme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      })();
+    </script>
   </head>
   <body>
     <nav class="navbar">

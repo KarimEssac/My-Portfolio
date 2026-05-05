@@ -378,8 +378,10 @@ class ThemeManager {
     
     applyTheme(theme) {
         if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
             this.body.setAttribute('data-theme', 'dark');
         } else {
+            document.documentElement.removeAttribute('data-theme');
             this.body.removeAttribute('data-theme');
         }
     }

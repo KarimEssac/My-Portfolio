@@ -36,7 +36,15 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
+    .experience-summary {
+        display: none;
+    }
+
+    .works-stats {
+        display: none;
+    }
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -97,6 +105,7 @@
     .image-container {
         align-self: flex-end;
         margin-bottom: 0;
+        max-width: 350px;
     }
     
     [data-theme="dark"] .home-image {
