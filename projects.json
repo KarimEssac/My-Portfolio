@@ -6,7 +6,15 @@
       "name": "Fantazina",
       "shortDescription": "Create Your Own Fantasy League",
       "description": "Fantazina is a fully integrated fantasy sports platform designed to offer a complete and competitive experience. It allows users to create and manage leagues, build teams, track player performance, and compete across rounds using dynamic scoring and customizable rules. The system supports league setup and management, team building, budgets, transfers, captain choices, bench options, and round updates. Match events such as goals, assists, cards, and penalties are recorded and automatically converted into player points. Users and league owners can view rankings, statistics, and performance through clear and organized dashboards. Fantazina also includes a full communication system for tickets and messaging, along with secure authentication features like OTP verification and password recovery. Overall, it functions as a complete fantasy sports ecosystem that manages everything from league creation to real-time scoring.",
-      "techStack": ["PHP", "Laravel", "HTML", "Twilio", "CSS", "JavaScript", "MySQL"],
+      "techStack": [
+        "PHP",
+        "Laravel",
+        "HTML",
+        "Twilio",
+        "CSS",
+        "JavaScript",
+        "MySQL"
+      ],
       "link": "https://fantazina.com",
       "thumbnail": "assets/fantazina/1.webp",
       "images": [
@@ -31,7 +39,15 @@
       "name": "Skorka",
       "shortDescription": "Full-stack shopping solution",
       "description": "Skorka is a footwear e-commerce application designed to provide users with a seamless online shopping experience. It allows customers to browse and search products, add items to their cart, and complete secure purchases with ease. The platform also supports product categorization, user authentication, and order management, making it efficient for both customers and administrators. With its clean design and intuitive interface, Skorka simplifies footwear shopping and enhances overall user satisfaction.",
-      "techStack": ["PHP", "Laravel", "HTML", "WebSockets", "CSS", "JavaScript", "MySQL"],
+      "techStack": [
+        "PHP",
+        "Laravel",
+        "HTML",
+        "WebSockets",
+        "CSS",
+        "JavaScript",
+        "MySQL"
+      ],
       "link": "https://skorkaa.com",
       "thumbnail": "assets/skorka/1.webp",
       "images": [
@@ -55,7 +71,16 @@
       "name": "Lens & Light",
       "shortDescription": "Full-stack photography gear E-commerce",
       "description": "Lens & Light is a full-stack training E-commerce platform for professional photography gear. It allows users to browse and search products, add items to their cart, and experience a responsive, modern interface designed with AI-assisted UI/UX. The platform includes secure user authentication, API-powered back-end services, and optimized front-end performance using advanced techniques, providing a realistic, professional online shopping experience.",
-      "techStack": ["React.js", "Next.js", "Laravel", "MySQL", "Sanctum", "Google Stitch AI", "Tailwind CSS", "Typescript"],
+      "techStack": [
+        "React.js",
+        "Next.js",
+        "Laravel",
+        "MySQL",
+        "Sanctum",
+        "Google Stitch AI",
+        "Tailwind CSS",
+        "Typescript"
+      ],
       "link": "https://lens-and-light-store.vercel.app/",
       "thumbnail": "assets/lens-and-light/1.webp",
       "images": [
@@ -77,7 +102,15 @@
       "name": "Scouters Management System",
       "shortDescription": "Scouts registration and activity management system",
       "description": "The Scouters Management System is a web application that streamlines the process of handling scout registrations, managing activities, and monitoring performance. It enables leaders to organize events, track participation, and maintain structured records, while also providing reports that support better decision-making. With its simple interface and efficient workflows, the system reduces manual effort and improves overall coordination between scouts and leaders.",
-      "techStack": ["PHP", "Laravel", "HTML", "WebSockets", "CSS", "JavaScript", "MySQL"],
+      "techStack": [
+        "PHP",
+        "Laravel",
+        "HTML",
+        "WebSockets",
+        "CSS",
+        "JavaScript",
+        "MySQL"
+      ],
       "link": "https://github.com/KarimEssac/Scout_Management_System",
       "thumbnail": "assets/scout/2.webp",
       "images": [
@@ -101,7 +134,17 @@
       "name": "Ticket Reservation System",
       "shortDescription": "Ticket reservation and total revenue system",
       "description": "The Ticket Reservation System is a full-stack web application for creating and managing events, venues, and seat reservations. It provides an interactive seat map for users to select seats, real-time availability to prevent double bookings, secure order processing, and electronic ticket issuance. The admin dashboard enables organizers to create events, configure seating layouts and prices, manage bookings and refunds, and view detailed analytics and reports on sales, occupancy, and revenue. The system supports user accounts, order history, and role-based access for staff and administrators.",
-      "techStack": ["Angular", "PHP", "Laravel", "HTML", "CSS", "JavaScript", "MySQL", "WebSockets", "Stripe (or other payment gateway)"],
+      "techStack": [
+        "Angular",
+        "PHP",
+        "Laravel",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "MySQL",
+        "WebSockets",
+        "Stripe (or other payment gateway)"
+      ],
       "link": "#",
       "thumbnail": "assets/bi_anglos/1.webp",
       "images": [
@@ -121,7 +164,15 @@
       "name": "Pharaonic Bank",
       "shortDescription": "Full-stack banking management system",
       "description": "Pharaonic Bank is a full-stack web application developed as a student project to simulate real banking operations. It provides core features such as user account creation, secure authentication, balance tracking, transactions, and fund transfers. The system also supports admin management for overseeing users and operations. Designed with a structured backend and an intuitive frontend, it demonstrates how technology can streamline banking processes while offering students hands-on experience in building scalable financial applications.",
-      "techStack": ["PHP", "Laravel", "HTML", "WebSockets", "CSS", "JavaScript", "MySQL"],
+      "techStack": [
+        "PHP",
+        "Laravel",
+        "HTML",
+        "WebSockets",
+        "CSS",
+        "JavaScript",
+        "MySQL"
+      ],
       "link": "",
       "thumbnail": "assets/bank/1.webp",
       "images": [
@@ -144,22 +195,121 @@
       "name": "Sweden",
       "shortDescription": "Chrome Extension",
       "description": "Sweden enhances your ADS-B Exchange experience by overlaying essential aviation navigation data directly onto the live traffic map.\nFeatures include:\n\nWaypoints & Fixes — See named intersections and nav fixes plotted alongside live aircraft\nNDBs (Non-Directional Beacons) — Visualize ground-based radio navigation stations\nMOAs (Military Operations Areas) — Know when aircraft are entering or operating near restricted airspace\nFBOs (Fixed Base Operators) — Identify fuel, service, and general aviation stop locations\nVFR Waypoints — Spot visual flight reference points used by low-altitude pilots\n\nWhether you're a seasoned aviation enthusiast or just starting to explore ADS-B tracking, Sweden helps you understand the \"why\" behind each aircraft's route — turning raw flight data into meaningful navigation context.\nPerfect for:\n\nADS-B hobbyists and planespotters\nStudent pilots studying real-world routing\nAviation enthusiasts who want to guess and decode ATC instructions\nAnyone who wants a richer, more informative ADS-B Exchange map",
-      "techStack": ["JavaScript", "HTML", "CSS", "Chrome Extension"],
+      "techStack": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Chrome Extension"
+      ],
       "link": "",
-      "thumbnail": "assets/Sweden/1.webp",
+      "thumbnail": "assets/sweden/1.webp",
       "images": [
-        "assets/Sweden/1.webp",
-        "assets/Sweden/2.webp",
-        "assets/Sweden/3.webp",
-        "assets/Sweden/4.webp",
-        "assets/Sweden/5.webp",
-        "assets/Sweden/6.webp"
+        "assets/sweden/1.webp",
+        "assets/sweden/2.webp",
+        "assets/sweden/3.webp",
+        "assets/sweden/4.webp",
+        "assets/sweden/5.webp",
+        "assets/sweden/6.webp"
       ],
       "category": "Chrome Extension",
       "filter": "extensions",
       "focus": "Aviation data overlay, map context",
       "result": "An extension that turns raw flight data into meaningful navigation context.",
       "accent": "#e6a15c"
+    },
+    {
+      "id": 8,
+      "order": 8,
+      "name": "Mostaql Filterer",
+      "shortDescription": "Chrome Extension for Mostaql Projects",
+      "description": "Mostaql Filterer is a Chrome Manifest V3 extension designed to streamline scanning project lists on Mostaql.com. It overlays client-side filters that Mostaql does not expose directly, helping freelancers find the most relevant opportunities.\n\nFeatures include:\n- Budget Range: Evaluates budget range overlaps.\n- Proposal Count: Filter by the number of bids submitted.\n- Multi-page Fetching: Fetches and deduplicates projects from multiple pages.\n- Client Hiring Rate: Opens project details sequentially in the background to filter by client hire rate.\n- Project Age: Filters by relative project age in days.\n- Rate Limiting: Limits network requests to prevent account or server overload.\n- Draft Saving: Remembers filter values locally in Chrome storage.",
+      "techStack": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Chrome Extension"
+      ],
+      "link": "https://chromewebstore.google.com/detail/mostaql-filterer/lolehopedmbmbndcookladilnphfkfch",
+      "thumbnail": "assets/mostaql-filterer/1.webp",
+      "images": [
+        "assets/mostaql-filterer/1.webp",
+        "assets/mostaql-filterer/2.webp",
+        "assets/mostaql-filterer/3.webp",
+        "assets/mostaql-filterer/4.webp",
+        "assets/mostaql-filterer/5.webp"
+      ],
+      "category": "Chrome Extension",
+      "filter": "extensions",
+      "focus": "Popup filtering panel, project scanning",
+      "result": "A Manifest V3 extension adding advanced client-side filters, page fetching, and rate limiting to Mostaql.",
+      "accent": "#06b6d4"
+    },
+    {
+      "id": 9,
+      "order": 9,
+      "name": "El-Malak POS",
+      "shortDescription": "Point of Sale & Inventory Management System",
+      "description": "El-Malak Theatre Cafeteria System is a production-grade, tightly-coupled Point of Sale (POS) and Inventory Management system designed explicitly for El-Malak Theatre's operational needs. Running as a self-contained Windows Desktop executable, it bridges a PostgreSQL database with a hardware-accelerated React frontend via an embedded Express/Socket.IO server.\n\nKey features include:\n- Desktop Client: Built on Electron + React 18 + TS + Vite, powered by Zustand and Socket.IO for real-time reactivity.\n- Shared Backend: Embedded Express and Socket.IO servers running natively alongside Electron to sync data instantly.\n- \"Stitch\" Design System: A unified dark/light kiosk interface optimized for fullscreen, distraction-free boundary layout.\n- Speed-focused POS: Keyboard shortcuts for lightning-fast product search, inventory manipulation, and transaction processing.\n- Automated Updates: Seamless background checks and self-updating installers driven by GitHub Actions CI/CD.",
+      "techStack": [
+        "Electron",
+        "React.js",
+        "Express",
+        "Socket.io",
+        "PostgreSQL",
+        "Prisma",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
+      "link": "https://malak-theatre.vercel.app/",
+      "thumbnail": "assets/elmalak-theatre/1.webp",
+      "images": [
+        "assets/elmalak-theatre/1.webp",
+        "assets/elmalak-theatre/2.webp",
+        "assets/elmalak-theatre/3.webp",
+        "assets/elmalak-theatre/4.webp",
+        "assets/elmalak-theatre/5.webp",
+        "assets/elmalak-theatre/6.webp",
+        "assets/elmalak-theatre/7.webp",
+        "assets/elmalak-theatre/8.webp",
+        "assets/elmalak-theatre/9.webp"
+      ],
+      "category": "POS System",
+      "filter": "pos",
+      "focus": "Real-time POS kiosk, desktop executable",
+      "result": "A standalone desktop POS and inventory client with real-time sync and auto-update capabilities.",
+      "accent": "#dc2626"
+    },
+    {
+      "id": 10,
+      "order": 10,
+      "name": "Valentro",
+      "shortDescription": "Luxury Fragrance E-Commerce Application",
+      "description": "Valentro is a luxury fragrance e-commerce application built with Next.js App Router, TypeScript, Tailwind CSS, Prisma, PostgreSQL, NextAuth.js, and next-intl for multi-language support.\n\nKey features include:\n- Technical Stack: Powered by Next.js, React 18, and Prisma ORM connecting to a PostgreSQL database.\n- Internationalization & Auth: Fully integrates next-intl for localization (English/Arabic) and NextAuth.js with pre-seeded admin credentials.\n- Image Optimization: Automatically optimizes product imagery to WebP format during upload and serves them securely via Cloudinary.\n- Clean Architecture: Modular codebase featuring a typed API layer, UI primitives, global layout controls, and full schema parity.",
+      "techStack": [
+        "Next.js",
+        "React.js",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "NextAuth.js",
+        "next-intl",
+        "Cloudinary"
+      ],
+      "link": "https://valentro.com/",
+      "thumbnail": "assets/valentro/1.webp",
+      "images": [
+        "assets/valentro/1.webp",
+        "assets/valentro/2.webp",
+        "assets/valentro/3.webp",
+        "assets/valentro/4.webp",
+        "assets/valentro/5.webp"
+      ],
+      "category": "Commerce",
+      "filter": "commerce",
+      "focus": "Next.js storefront, i18n, image optimization",
+      "result": "A high-performance luxury fragrance storefront utilizing database seeds, NextAuth, next-intl, and Cloudinary storage.",
+      "accent": "#c5a880"
     }
   ]
 }

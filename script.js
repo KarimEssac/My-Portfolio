@@ -10,12 +10,13 @@ const worksFilters = [
     { id: 'commerce', label: 'Commerce' },
     { id: 'management', label: 'Systems' },
     { id: 'finance', label: 'Finance' },
-    { id: 'extensions', label: 'Extensions' }
+    { id: 'extensions', label: 'Extensions' },
+    { id: 'pos', label: 'POS' }
 ];
 
 async function loadProjects() {
     try {
-        const response = await fetch('projects.json');
+        const response = await fetch('projects.json?v=' + Date.now());
         const data = await response.json();
         
         data.projects.forEach(project => {
@@ -33,7 +34,7 @@ async function loadProjects() {
 
 async function loadTestimonials() {
     try {
-        const response = await fetch('testimonials.json');
+        const response = await fetch('testimonials.json?v=' + Date.now());
         const data = await response.json();
 
         data.testimonials.forEach(testimonial => {
