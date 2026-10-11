@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Fira+Code:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
+    --font-family: 'Roboto', sans-serif;
     --primary-bg: white;
     --secondary-bg: #BAC7CF;
     --text-primary: #212F43;
@@ -51,12 +52,19 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-family);
     background-color: var(--primary-bg);
     color: var(--text-primary);
     line-height: 1.6;
     transition: var(--transition);
     overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
 }
 
 .container {

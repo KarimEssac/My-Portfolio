@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Fira+Code:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/style.css" />
@@ -33,10 +33,10 @@
             <a href="#about" class="nav-link">About</a>
           </li>
           <li class="nav-item">
-                        <a href="#experience" class="nav-link">Experience</a>
+            <a href="#works" class="nav-link">My Works</a>
           </li>
           <li class="nav-item">
-            <a href="#works" class="nav-link">Works</a>
+            <a href="#projects" class="nav-link">Projects</a>
           </li>
           <li class="nav-item">
             <a href="#testimonials" class="nav-link">Testimonials</a>
@@ -387,7 +387,7 @@
                   font-size="32"
                   font-weight="bold"
                   fill="var(--primary-bg)"
-                  font-family="Arial, sans-serif"
+                  font-family="Roboto, sans-serif"
                 >
                   PHP
                 </text>
@@ -509,241 +509,302 @@
 
     
     
-    <section class="experience" id="experience">
-      <div class="container experience-shell">
-        <div class="experience-header fadeInUp">
-          <div class="experience-heading">
-            <span class="experience-eyebrow">Career path</span>
-            <h2 class="section-title experience-title">Experience</h2>
-            <p>
-              A timeline of positions where I've contributed to real products, reviewed AI outputs, built internal tools, and delivered production systems.
-            </p>
+    <section class="work-journey" id="works" aria-labelledby="journeyTitle">
+      <span id="experience" class="journey-anchor" aria-hidden="true"></span>
+      <div class="journey-sticky">
+        <header class="journey-header journey-shell">
+          <div>
+            <span class="journey-eyebrow">The people, the roles, the work</span>
+            <h2 class="journey-title" id="journeyTitle">My Works<span>.</span></h2>
           </div>
-          <div class="experience-summary" aria-label="Experience summary">
-            <div>
-              <strong>3</strong>
-              <span>Positions held</span>
+          <p class="journey-header-description">
+            A journey through AI quality, aviation conversations, and front-end engineering.
+          </p>
+          <div class="journey-navigation">
+            <span class="journey-chapter-count" aria-label="Current chapter">
+              <strong data-journey-counter>01</strong><span data-journey-total>/ 04</span>
+            </span>
+            <div class="journey-arrows">
+              <button type="button" class="journey-arrow" data-journey-previous aria-label="View more recent role" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
+              </button>
+              <button type="button" class="journey-arrow" data-journey-next aria-label="View earlier role">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </button>
             </div>
-            <div>
-              <strong>2+</strong>
-              <span>Years active</span>
-            </div>
-            <div>
-              <strong>Remote</strong>
-              <span>Primary mode</span>
-            </div>
+          </div>
+        </header>
+
+        <div class="journey-viewport journey-shell">
+          <div class="journey-track">
+            <article class="journey-panel journey-panel--conversation is-active" id="journey-alignerr-qa" data-company="Alignerr" data-project="Conversation QA" data-period="Jul 2026 — Present" data-marker-date="present" tabindex="0" aria-labelledby="alignerrQATitle">
+              <div class="journey-copy">
+                <div class="journey-meta">
+                  <span class="journey-current">Current occupation</span>
+                  <span>Jul 2026 — Present</span>
+                  <span>Freelance · Remote</span>
+                </div>
+                <h3 class="journey-company" id="alignerrQATitle">Alignerr</h3>
+                <h4 class="journey-role">AI Quality Assurance Specialist <span>— Reviewer</span></h4>
+                <p class="journey-description">
+                  Continuing my Alignerr journey through precise American English transcription and quality review for AI training datasets.
+                </p>
+                <ul class="journey-contributions">
+                  <li><strong>Conversation accuracy.</strong> Validate American English audio transcriptions and speaker labels against project standards.</li>
+                  <li><strong>Annotation QA.</strong> Audit completed tasks for accuracy, consistency, and guideline compliance; give actionable feedback to improve annotation quality and reviewer consistency.</li>
+                  <li><strong>Team &amp; workflows.</strong> Resolve complex cases with annotators and reviewers, and continuously improve annotation workflows and QA processes.</li>
+                </ul>
+                <div class="journey-skills" aria-label="Skills used in conversation quality assurance at Alignerr">
+                  <span>American English</span><span>Transcription Review</span><span>Speaker Labeling</span><span>Dataset QA</span>
+                </div>
+              </div>
+              <figure class="journey-art journey-art--connected">
+                <nav class="journey-project-path" aria-label="Alignerr project journey">
+                  <button type="button" class="journey-project-step" data-role-index="1" aria-controls="journey-alignerr">Aviation</button>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16m-5-5 5 5-5 5"/></svg>
+                  <button type="button" class="journey-project-step is-active" data-role-index="0" aria-controls="journey-alignerr-qa" aria-current="step">Conversation QA</button>
+                </nav>
+                <svg class="journey-illustration" viewBox="0 0 480 360" role="img" aria-labelledby="conversationIllustrationTitle">
+                  <title id="conversationIllustrationTitle">American English conversations, speaker labeling, and transcription quality review</title>
+                  <circle class="illustration-wash" cx="240" cy="176" r="126"/>
+                  <path class="illustration-outline illustration-paper" d="M108 78h202a14 14 0 0 1 14 14v66a14 14 0 0 1-14 14H162l-26 21v-21h-28a14 14 0 0 1-14-14V92a14 14 0 0 1 14-14Z"/>
+                  <circle class="illustration-outline illustration-wash" cx="123" cy="108" r="9"/>
+                  <path class="illustration-outline" d="M151 127h10m10-8v16m10-26v36m10-43v50m10-32v14m10-20v26m10-42v58m10-36v14m10-28v42m10-29v16m10-9h12"/>
+                  <path class="illustration-outline illustration-paper" d="M180 190h196a14 14 0 0 1 14 14v64a14 14 0 0 1-14 14h-23v21l-27-21H180a14 14 0 0 1-14-14v-64a14 14 0 0 1 14-14Z"/>
+                  <circle class="illustration-outline illustration-wash" cx="195" cy="219" r="9"/>
+                  <path class="illustration-outline" d="M220 219h135"/>
+                  <path class="illustration-outline illustration-muted" d="M190 242h165m-165 18h111"/>
+                  <circle class="illustration-solid" cx="379" cy="276" r="23"/>
+                  <path class="illustration-inverse" d="m369 276 7 7 14-16"/>
+                </svg>
+                <figcaption class="journey-art-label">American English · Transcription quality</figcaption>
+              </figure>
+            </article>
+
+            <article class="journey-panel journey-panel--aviation" id="journey-alignerr" data-company="Alignerr" data-project="Aviation" data-period="Started Jan 2026" data-marker-date="2026.25" tabindex="0" aria-labelledby="alignerrTitle">
+              <div class="journey-copy">
+                <div class="journey-meta">
+                  <span class="journey-past">Earlier Alignerr project</span>
+                  <span>Started Jan 2026</span>
+                  <span>Freelance · Remote</span>
+                </div>
+                <h3 class="journey-company" id="alignerrTitle">Alignerr</h3>
+                <h4 class="journey-role">Aviation AI Data Labeling Specialist <span>— Reviewer</span></h4>
+                <p class="journey-description">
+                  Turning aviation conversations into structured AI training data, with a reviewer’s eye for accuracy.
+                </p>
+                <ul class="journey-contributions">
+                  <li><strong>Aviation transcription.</strong> Verified ATC and pilot communications across ground, ramp, and tower channels.</li>
+                  <li><strong>Quality review.</strong> Audited callsigns, taxi instructions, waypoints, headings, and phraseology; gave the team actionable feedback.</li>
+                  <li><strong>Workflow tools.</strong> Built a Chrome extension to improve annotation speed and team accuracy.</li>
+                </ul>
+                <div class="journey-skills" aria-label="Skills used at Alignerr">
+                  <span>Data Annotation</span><span>QA Review</span><span>Chrome Extensions</span><span>Aviation</span>
+                </div>
+              </div>
+              <figure class="journey-art journey-art--connected">
+                <nav class="journey-project-path" aria-label="Alignerr project journey">
+                  <button type="button" class="journey-project-step is-active" data-role-index="1" aria-controls="journey-alignerr" aria-current="step">Aviation</button>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16m-5-5 5 5-5 5"/></svg>
+                  <button type="button" class="journey-project-step" data-role-index="0" aria-controls="journey-alignerr-qa">Conversation QA</button>
+                </nav>
+                <svg class="journey-illustration" viewBox="0 0 480 360" role="img" aria-labelledby="aviationIllustrationTitle">
+                  <title id="aviationIllustrationTitle">Aviation communications and data review</title>
+                  <circle class="illustration-wash" cx="244" cy="174" r="126"/>
+                  <path class="illustration-outline illustration-paper" d="M254 73c7 0 12 7 12 16v49l84 45v17l-84-22v45l25 18v13l-37-10-37 10v-13l25-18v-45l-84 22v-17l84-45V89c0-9 5-16 12-16Z"/>
+                  <path class="illustration-outline illustration-muted" d="M254 96v103M229 170l25-7 25 7"/>
+                  <rect class="illustration-outline illustration-paper" x="78" y="236" width="182" height="68" rx="12"/>
+                  <path class="illustration-outline" d="M100 270h9m8-8v16m10-24v32m10-40v48m10-28v8m10-19v30m10-39v48m10-31v14m10-26v38m10-28v18m10-9h15"/>
+                  <path class="illustration-outline illustration-muted" d="M260 269h45c13 0 24-11 24-24v-20"/>
+                  <circle class="illustration-solid" cx="348" cy="273" r="22"/>
+                  <path class="illustration-inverse" d="m338 273 7 7 13-15"/>
+                </svg>
+                <figcaption class="journey-art-label">Aviation communications</figcaption>
+              </figure>
+            </article>
+
+            <article class="journey-panel journey-panel--engineering" id="journey-scale" data-company="Scale AI" data-period="Apr — Aug 2025" data-marker-date="2025.5" tabindex="0" aria-labelledby="scaleTitle">
+              <div class="journey-copy">
+                <div class="journey-meta">
+                  <span class="journey-past">Previous experience</span>
+                  <span>Apr — Aug 2025</span>
+                  <span>Freelance · Remote</span>
+                </div>
+                <h3 class="journey-company" id="scaleTitle">Scale <span>AI</span></h3>
+                <h4 class="journey-role">AI Trainer — Front-End Engineering &amp; UI Quality</h4>
+                <p class="journey-description">
+                  Building interfaces and reviewing AI-generated designs against real design, accessibility, and engineering requirements.
+                </p>
+                <ul class="journey-contributions">
+                  <li><strong>Front-end engineering.</strong> Built production-ready pages under strict design and functional guidelines.</li>
+                  <li><strong>Interface evaluation.</strong> Checked responsiveness and accessibility, with actionable feedback to improve model outputs.</li>
+                  <li><strong>Interactive tools.</strong> Created tools to help guide AI toward practical, user-focused solutions.</li>
+                </ul>
+                <div class="journey-skills" aria-label="Skills used at Scale AI">
+                  <span>React</span><span>TypeScript</span><span>Next.js</span><span>Tailwind CSS</span>
+                </div>
+              </div>
+              <figure class="journey-art">
+                <svg class="journey-illustration" viewBox="0 0 480 360" role="img" aria-labelledby="engineeringIllustrationTitle">
+                  <title id="engineeringIllustrationTitle">Front-end development and interface quality</title>
+                  <circle class="illustration-wash" cx="239" cy="181" r="128"/>
+                  <rect class="illustration-outline illustration-paper" x="83" y="75" width="312" height="213" rx="13"/>
+                  <path class="illustration-outline" d="M83 112h312"/>
+                  <circle class="illustration-solid" cx="104" cy="94" r="3"/>
+                  <circle class="illustration-solid" cx="117" cy="94" r="3"/>
+                  <circle class="illustration-solid" cx="130" cy="94" r="3"/>
+                  <path class="illustration-outline" d="m154 151-24 27 24 27m47-54 24 27-24 27m-16-51-15 48"/>
+                  <rect class="illustration-wash" x="255" y="144" width="110" height="33" rx="5"/>
+                  <path class="illustration-outline illustration-muted" d="M257 197h101m-101 19h76m-214 29h136"/>
+                  <path class="illustration-solid" d="m341 227 2 59 16-18 17 26 13-9-18-25 25-4-55-29Z"/>
+                  <circle class="illustration-solid" cx="108" cy="286" r="21"/>
+                  <path class="illustration-inverse" d="m99 286 6 6 13-14"/>
+                </svg>
+                <figcaption class="journey-art-label">Front-end engineering &amp; UI quality</figcaption>
+              </figure>
+            </article>
+
+            <article class="journey-panel journey-panel--data" id="journey-diakonia" data-company="Diakonia Egypt" data-period="2019 — 2020" data-marker-date="2020" tabindex="0" aria-labelledby="diakoniaTitle">
+              <div class="journey-copy">
+                <div class="journey-meta">
+                  <span class="journey-past">Where it started</span>
+                  <span>May 2019 — Oct 2020</span>
+                  <span>Contract · Cairo, Egypt</span>
+                </div>
+                <h3 class="journey-company" id="diakoniaTitle">Diakonia <span>Egypt</span></h3>
+                <h4 class="journey-role">Data Entry Assistant</h4>
+                <p class="journey-description">
+                  Bringing order to organizational records. Managed and verified large datasets to keep information consistent and accurate.
+                </p>
+                <ul class="journey-contributions">
+                  <li><strong>Data management.</strong> Maintained organizational records and checked datasets for consistency.</li>
+                  <li><strong>Attention to detail.</strong> Verified information across records to support accurate data.</li>
+                </ul>
+                <div class="journey-skills" aria-label="Skills used at Diakonia Egypt">
+                  <span>Excel</span><span>Microsoft Word</span><span>PowerPoint</span><span>Databases</span>
+                </div>
+              </div>
+              <figure class="journey-art">
+                <svg class="journey-illustration" viewBox="0 0 480 360" role="img" aria-labelledby="recordsIllustrationTitle">
+                  <title id="recordsIllustrationTitle">Organized records and verified data</title>
+                  <circle class="illustration-wash" cx="244" cy="184" r="128"/>
+                  <rect class="illustration-outline illustration-wash illustration-muted" x="135" y="58" width="221" height="240" rx="10" transform="rotate(7 245 178)"/>
+                  <rect class="illustration-outline illustration-paper" x="115" y="74" width="220" height="240" rx="10"/>
+                  <path class="illustration-outline" d="M139 99h57"/>
+                  <rect class="illustration-wash" x="139" y="125" width="172" height="31" rx="3"/>
+                  <path class="illustration-outline illustration-muted" d="M139 176h172m-172 36h172m-172 36h172m-116-92v126m58-126v126"/>
+                  <path class="illustration-outline" d="M148 140h23m35 0h26m33 0h36"/>
+                  <circle class="illustration-solid" cx="329" cy="271" r="29"/>
+                  <path class="illustration-inverse" d="m316 271 9 9 18-20"/>
+                </svg>
+                <figcaption class="journey-art-label">Accurate, organized data</figcaption>
+              </figure>
+            </article>
           </div>
         </div>
 
-        <div class="experience-timeline fadeInUp">
-
-          <!-- Role 1: Alignerr -->
-          <div class="experience-item is-open">
-            <div class="experience-node"></div>
-            <div class="experience-card">
-              <div class="experience-card-top">
-                <span class="experience-type-badge">Freelance</span>
-                <span class="experience-status current">Current occupation</span>
-                <span class="experience-date">Jan 2026 &mdash; Present</span>
-              </div>
-              <h3 class="experience-role">Aviation AI Data Labeling Specialist &mdash; Reviewer</h3>
-              <div class="experience-company">
-                <span class="experience-company-name">Alignerr</span>
-                <span class="experience-divider"></span>
-                <span class="experience-location">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                  Remote
-                </span>
-              </div>
-              <div class="experience-details">
-              <ul class="experience-highlights">
-                <li class="experience-highlight">Transcribed and verified aviation communications between ATC and pilots across ground, ramp, and tower channels</li>
-                <li class="experience-highlight">Ensured high accuracy of callsigns, taxi instructions, waypoints, headings, and standard aviation phraseology</li>
-                <li class="experience-highlight">Served as a Reviewer, auditing team outputs and providing actionable feedback to improve performance</li>
-                <li class="experience-highlight">Developed a Chrome extension to enhance annotation speed and team accuracy</li>
-                <li class="experience-highlight">Contributed to building structured, high-quality datasets for AI training systems</li>
-              </ul>
-              <div class="experience-tech">
-                <span class="experience-tech-pill">Chrome Extensions</span>
-                <span class="experience-tech-pill">Data Annotation</span>
-                <span class="experience-tech-pill">QA Review</span>
-                <span class="experience-tech-pill">Aviation</span>
-              </div>
-              </div>
+        <footer class="journey-timeline journey-shell">
+          <div class="journey-timeline-top">
+            <span class="journey-timeline-caption">Experience over time</span>
+            <span class="journey-timeline-status" data-journey-status aria-live="polite">Alignerr · Conversation QA · Jul 2026 — Present</span>
+          </div>
+          <div class="journey-timeline-grid">
+            <div class="journey-lane-labels" aria-hidden="true"><span>Work</span><span>Study</span></div>
+            <div class="journey-chart" aria-label="Career and education timeline">
+              <div class="journey-years" aria-hidden="true"></div>
+              <span class="journey-employer-span" data-date-start="2026" data-date-end="present" style="left:87.5%;width:12%" aria-hidden="true"><span class="journey-bar-label">Alignerr</span></span>
+              <button type="button" class="journey-role-bar journey-role-bar--alignerr is-active journey-role-bar--current" data-role-index="0" data-date-start="2026.5" data-date-end="present" style="left:93.75%;width:6%" aria-label="View Alignerr conversation QA, July 2026 to present" aria-controls="journey-alignerr-qa" aria-current="step"></button>
+              <button type="button" class="journey-role-bar journey-role-bar--alignerr" data-role-index="1" data-date-start="2026" data-date-end="2026.5" style="left:87.5%;width:6.25%" aria-label="View the earlier Alignerr aviation project, started January 2026" aria-controls="journey-alignerr"></button>
+              <button type="button" class="journey-role-bar journey-role-bar--scale" data-role-index="2" data-date-start="2025.25" data-date-end="2025.6667" style="left:78.125%;width:5.2%" aria-label="View Scale AI, April to August 2025" aria-controls="journey-scale"><span class="journey-bar-label">Scale AI</span></button>
+              <button type="button" class="journey-role-bar" data-role-index="3" data-date-start="2019.3333" data-date-end="2020.8333" style="left:4.17%;width:18.75%" aria-label="View Diakonia Egypt, May 2019 to October 2020" aria-controls="journey-diakonia"><span class="journey-bar-label">Diakonia Egypt</span></button>
+              <a class="journey-study-bar" href="#education" data-date-start="2021.75" data-date-end="2025.5833" style="left:34.375%;width:47.9%" aria-label="Computer Science at El-Shorouk Academy, October 2021 to July 2025"><span class="journey-bar-label">El-Shorouk Academy</span></a>
+              <span class="journey-playhead" aria-hidden="true"></span>
             </div>
           </div>
-
-          <!-- Role 2: Scale AI -->
-          <div class="experience-item">
-            <div class="experience-node"></div>
-            <div class="experience-card">
-              <div class="experience-card-top">
-                <span class="experience-type-badge">Freelance</span>
-                <span class="experience-status">Apr &mdash; Aug 2025</span>
-                <span class="experience-date">5 months</span>
-              </div>
-              <h3 class="experience-role">AI Trainer &mdash; Front-End Engineering &amp; UI Quality</h3>
-              <div class="experience-company">
-                <span class="experience-company-name">Scale AI</span>
-                <span class="experience-divider"></span>
-                <span class="experience-location">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                  Remote
-                </span>
-              </div>
-              <div class="experience-details">
-              <ul class="experience-highlights">
-                <li class="experience-highlight">Built production-ready front-end pages under strict design and functional guidelines to improve AI model outputs</li>
-                <li class="experience-highlight">Ensured interfaces were responsive, accessible, and aligned with real-world engineering constraints</li>
-                <li class="experience-highlight">Evaluated AI-generated designs, providing actionable feedback to guide models toward practical, user-centric solutions</li>
-                <li class="experience-highlight">Built interactive tools used to enhance AI outputs</li>
-              </ul>
-              <div class="experience-tech">
-                <span class="experience-tech-pill">React</span>
-                <span class="experience-tech-pill">TypeScript</span>
-                <span class="experience-tech-pill">Next.js</span>
-                <span class="experience-tech-pill">Tailwind CSS</span>
-              </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Role 3: Diakonia Egypt -->
-          <div class="experience-item">
-            <div class="experience-node"></div>
-            <div class="experience-card">
-              <div class="experience-card-top">
-                <span class="experience-type-badge">Contract</span>
-                <span class="experience-status">May 2019 &mdash; Oct 2020</span>
-                <span class="experience-date">1 yr 6 mos</span>
-              </div>
-              <h3 class="experience-role">Data Entry Assistant</h3>
-              <div class="experience-company">
-                <span class="experience-company-name">Diakonia Egypt</span>
-                <span class="experience-divider"></span>
-                <span class="experience-location">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                  Cairo, Egypt
-                </span>
-              </div>
-              <div class="experience-details">
-              <ul class="experience-highlights">
-                <li class="experience-highlight">Managed and verified large data sets to ensure consistency and accuracy across organizational records</li>
-              </ul>
-              <div class="experience-tech">
-                <span class="experience-tech-pill">Microsoft Word</span>
-                <span class="experience-tech-pill">Excel</span>
-                <span class="experience-tech-pill">PowerPoint</span>
-                <span class="experience-tech-pill">Databases</span>
-              </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Education -->
-          <div class="experience-item">
-            <div class="experience-node"></div>
-            <div class="experience-card education-card">
-              <div class="experience-card-top">
-                <span class="experience-type-badge">Education</span>
-                <span class="experience-status">Oct 2021 &mdash; Jul 2025</span>
-                <span class="experience-date">4 years</span>
-              </div>
-              <h3 class="experience-role">Bachelor&rsquo;s Degree in Computer Science</h3>
-              <div class="experience-company">
-                <span class="experience-company-name">El-Shorouk Academy</span>
-                <span class="experience-divider"></span>
-                <span class="experience-location">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                  El-Shorouk, Egypt
-                </span>
-              </div>
-              <div class="education-grade">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-                Grade: Very Good
-              </div>
-              <div class="experience-details">
-              <ul class="experience-highlights">
-                <li class="experience-highlight">Graduation Project: Game Zone &mdash; Excellent</li>
-                <li class="experience-highlight">Developed a 3D card gaming platform using C#, including full game logic, interactive UI, and multiplayer functionality</li>
-                <li class="experience-highlight">Implemented performance optimizations for smooth 3D rendering and real-time user interactions</li>
-              </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
+          <div class="journey-progress" role="progressbar" data-journey-progress aria-label="Work history scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="journey-progress-fill"></span></div>
+        </footer>
       </div>
     </section>
-    <section class="works" id="works">
-      <div class="container works-shell">
-        <div class="works-header fadeInUp">
-          <div class="works-heading">
-            <span class="works-eyebrow">Selected builds</span>
-            <h2 class="section-title works-title">My Works</h2>
-            <p>
-              A closer look at the platforms, stores, dashboards, and systems I have built from interface to database.
-            </p>
-          </div>
-          <div class="works-stats" aria-label="Portfolio project summary">
-            <div class="works-stat">
-              <span class="works-stat-icon" aria-hidden="true">01</span>
-              <div>
-                <strong id="worksTotalCount">6</strong>
-                <span>Shipped projects</span>
-                <small>Case studies ready</small>
-              </div>
-            </div>
-            <div class="works-stat">
-              <span class="works-stat-icon" aria-hidden="true">02</span>
-              <div>
-                <strong>Full</strong>
-                <span>Stack delivery</span>
-                <small>Frontend to database</small>
-              </div>
-            </div>
-            <div class="works-stat">
-              <span class="works-stat-icon" aria-hidden="true">03</span>
-              <div>
-                <strong>UI</strong>
-                <span>+ API systems</span>
-                <small>Interfaces that operate</small>
-              </div>
-            </div>
-          </div>
+
+    <aside class="journey-education" id="education" aria-label="Education">
+      <div class="container journey-education-inner">
+        <div>
+          <span class="journey-eyebrow">The foundation</span>
+          <h3>Bachelor’s Degree in Computer Science</h3>
+          <p>El-Shorouk Academy · Oct 2021 — Jul 2025 · Grade: Very Good</p>
         </div>
+        <details>
+          <summary>Graduation project: Game Zone — Excellent</summary>
+          <p>A 3D card gaming platform built with C#, with full game logic, an interactive UI, and multiplayer functionality. Optimized 3D rendering and real-time interactions for smooth performance.</p>
+        </details>
+      </div>
+    </aside>
+
+    <section class="works" id="projects" aria-labelledby="projectsTitle">
+      <div class="container works-shell">
+        <header class="works-header fadeInUp">
+          <div class="works-heading">
+            <span class="works-eyebrow">A selection of my work</span>
+            <h2 class="works-title" id="projectsTitle">Selected <span>Projects.</span></h2>
+          </div>
+          <div class="works-intro">
+            <p>Platforms, storefronts, and everyday tools. Built from the first screen to the system behind it.</p>
+            <span class="works-overview" id="worksOverview"></span>
+          </div>
+        </header>
 
         <div class="works-toolbar fadeInUp">
-          <div class="works-filter-group" id="worksFilters" aria-label="Project filters"></div>
+          <div class="works-filter-group" id="worksFilters" role="group" aria-label="Project categories"></div>
           <span class="works-counter" id="worksCounter"></span>
         </div>
 
         <div class="works-showcase">
-          <article class="work-spotlight fadeInUp" id="workSpotlight" aria-live="polite"></article>
-          <div class="works-grid" id="carouselTrack">
-            <!-- Projects will be dynamically loaded here from projects.json -->
+          <article class="work-spotlight" id="workSpotlight" role="tabpanel" tabindex="0"></article>
+          <div class="works-index-header">
+            <span>In this collection</span>
+            <span id="projectCollectionCount"></span>
           </div>
+          <div class="works-project-index" id="projectIndex" role="tablist" aria-label="Projects in the selected category"></div>
         </div>
+        <p class="works-announcement" id="projectStatus" role="status" aria-live="polite" aria-atomic="true"></p>
       </div>
     </section>
 
-    <section class="testimonials" id="testimonials">
+    <section class="testimonials" id="testimonials" aria-labelledby="testimonialsTitle">
       <div class="container testimonials-shell">
-        <div class="testimonials-header fadeInUp">
+        <header class="testimonials-header fadeInUp">
           <div class="testimonials-heading">
-            <span class="testimonials-eyebrow">Client proof</span>
-            <h2 class="section-title testimonials-title">Testimonials</h2>
-            <p>
-              Real feedback from delivered work, kept close to the original screenshots so the words still feel grounded.
-            </p>
+            <span class="testimonials-eyebrow">Testimonials</span>
+            <h2 class="testimonials-title" id="testimonialsTitle">In their<br /><span>own words.</span></h2>
           </div>
-        </div>
+          <div class="testimonials-intro">
+            <p>Client feedback from completed projects, with the original reviews alongside.</p>
+            <div class="testimonials-reputation">
+              <strong id="testimonialAverageRating">—</strong>
+              <div class="testimonials-reputation-copy">
+                <div class="testimonials-overall-stars" id="testimonialOverallStars" aria-hidden="true"></div>
+                <span><span id="testimonialTotalCount">—</span> client reviews</span>
+              </div>
+            </div>
+          </div>
+        </header>
 
-        <div class="testimonials-stage fadeInUp">
-          <div class="testimonials-grid" id="testimonialsGrid">
-            <!-- Testimonials will be dynamically loaded here from testimonials.json -->
+        <div class="testimonials-stage">
+          <article class="testimonial-feature" id="testimonialSpotlight" role="tabpanel" tabindex="0" aria-label="Client review"></article>
+          <div class="testimonial-navigation">
+            <div class="testimonial-clients" id="testimonialClients" role="tablist" aria-label="Choose a client review"></div>
+            <div class="testimonial-pagination">
+              <span class="testimonial-page-count"><span data-review-current>01</span> / <span data-review-total>02</span></span>
+              <button class="testimonial-nav-button" type="button" data-review-previous aria-label="Previous client review" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6 9 12l6 6" /></svg>
+              </button>
+              <button class="testimonial-nav-button" type="button" data-review-next aria-label="Next client review" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+              </button>
+            </div>
           </div>
         </div>
+        <p class="testimonial-announcement" id="testimonialStatus" role="status" aria-live="polite" aria-atomic="true"></p>
       </div>
     </section>
 
@@ -862,8 +923,8 @@
               <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                                <li><a href="#experience">Experience</a></li>
-                <li><a href="#works">Works</a></li>
+                <li><a href="#works">My Works</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
               </ul>
@@ -1007,6 +1068,7 @@
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="script.js"></script>
+<script src="scripts/work-journey.js" defer></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   </body>
 </html>

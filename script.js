@@ -2,17 +2,27 @@ const projectsData = {};
 const testimonialsData = {};
 let allProjects = [];
 let allTestimonials = [];
+let activeTestimonialIndex = 0;
+let testimonialViewerTrigger = null;
 let activeWorksFilter = 'platforms';
 let activeSpotlightProjectId = null;
 
 const worksFilters = [
-    { id: 'platforms', label: 'Platforms' },
-    { id: 'commerce', label: 'Commerce' },
-    { id: 'management', label: 'Systems' },
-    { id: 'finance', label: 'Finance' },
-    { id: 'extensions', label: 'Extensions' },
-    { id: 'pos', label: 'POS' }
+    { id: 'platforms', label: 'Platforms', accent: '#4867b1' },
+    { id: 'commerce', label: 'Commerce', accent: '#b65f43' },
+    { id: 'management', label: 'Systems', accent: '#7b5bb8' },
+    { id: 'finance', label: 'Finance', accent: '#3d7d99' },
+    { id: 'extensions', label: 'Extensions', accent: '#e6a15c' },
+    { id: 'pos', label: 'POS', accent: '#dc2626' }
 ];
+
+const projectPresentations = {
+    1: { detail: 'assets/fantazina/3.webp', device: 'mobile', ratio: '481 / 839' },
+    2: { detail: 'assets/skorka/3.webp', device: 'mobile', ratio: '374 / 846' },
+    3: { detail: 'assets/lens-and-light/4.webp', device: 'mobile', ratio: '408 / 847' },
+    7: { hero: 'assets/sweden/2.webp', detail: 'assets/sweden/1.webp', device: 'extension', ratio: '256 / 567' },
+    8: { hero: 'assets/mostaql-filterer/3.webp', detail: 'assets/mostaql-filterer/1.webp', device: 'extension', ratio: '392 / 599' }
+};
 
 async function loadProjects() {
     try {
@@ -58,15 +68,16 @@ function renderProjects(projects) {
         activeWorksFilter = worksFilters.find(filter => availableFilters.has(filter.id))?.id || worksFilters[0].id;
     }
 
-    const totalCount = document.getElementById('worksTotalCount');
-    if (totalCount) {
-        totalCount.textContent = allProjects.length;
+    const overview = document.getElementById('worksOverview');
+    if (overview) {
+        overview.textContent = `${String(allProjects.length).padStart(2, '0')} projects / ${availableFilters.size} categories`;
     }
 
-    renderWorksFilters();
-    renderWorksCards();
-
     const firstVisibleProject = getVisibleProjects()[0];
+    activeSpotlightProjectId = firstVisibleProject?.id ?? null;
+    renderWorksFilters();
+    renderProjectIndex();
+
     if (firstVisibleProject) {
         updateWorksSpotlight(firstVisibleProject.id);
     }
@@ -101,182 +112,279 @@ function getProjectLink(project) {
     return link && link !== '#' ? link : '';
 }
 
-function renderTechPills(project, limit = 4, className = 'work-tech-pill') {
-    return (project.techStack || [])
-        .slice(0, limit)
-        .map(tech => `<span class="${className}">${escapeHTML(tech)}</span>`)
-        .join('');
+function getProjectImages(project) {
+    const presentation = projectPresentations[project.id] || {};
+    const localGallery = { 2: 'assets/skorka', 4: 'assets/scout' }[project.id];
+    const images = (project.images || []).map(image => {
+        const filename = image.match(/\/([1-7]\.webp)(?:[?#].*)?$/)?.[1];
+        return localGallery && filename ? `${localGallery}/${filename}` : image;
+    });
+    return [presentation.hero, project.thumbnail, ...images]
+        .filter(Boolean)
+        .filter((image, index, gallery) => gallery.indexOf(image) === index);
+}
+
+function getTestimonialAccent(platform) {
+    return { mostaql: '#2563eb', upwork: '#2f7d68' }[String(platform || '').toLowerCase()] || '#4867b1';
+}
+
+function getClientInitials(name) {
+    return String(name || 'Client').trim().split(/\s+/).slice(0, 2)
+        .map(part => part[0]).join('').toUpperCase();
 }
 
 function renderRatingMeter(rating) {
-    const maxRating = 5;
-    const safeRating = Math.max(0, Math.min(maxRating, Number(rating) || 0));
-
-    return Array.from({ length: maxRating }, (_, index) => `
-        <span class="${index < safeRating ? 'filled' : ''}"></span>
+    const safeRating = Math.max(0, Math.min(5, Number(rating) || 0));
+    return Array.from({ length: 5 }, (_, index) => `
+        <svg class="testimonial-star ${index < safeRating ? 'is-filled' : ''}" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3 14.78 8.63 21 9.53 16.5 13.92 17.56 20.11 12 17.19 6.44 20.11 7.5 13.92 3 9.53 9.22 8.63Z" />
+        </svg>
     `).join('');
 }
 
 function renderTestimonials(testimonials) {
     allTestimonials = [...testimonials].sort((a, b) => a.order - b.order);
+    activeTestimonialIndex = 0;
+    const spotlight = document.getElementById('testimonialSpotlight');
+    const clients = document.getElementById('testimonialClients');
+    if (!spotlight || !clients) return;
 
-    const testimonialsGrid = document.getElementById('testimonialsGrid');
-    if (!testimonialsGrid) return;
+    const count = document.getElementById('testimonialTotalCount');
+    const average = document.getElementById('testimonialAverageRating');
+    const stars = document.getElementById('testimonialOverallStars');
+    const averageValue = allTestimonials.length
+        ? allTestimonials.reduce((sum, review) => sum + Number(review.rating || 0), 0) / allTestimonials.length : 0;
+    if (count) count.textContent = String(allTestimonials.length).padStart(2, '0');
+    if (average) average.textContent = allTestimonials.length ? averageValue.toFixed(1) : '—';
+    if (stars) stars.innerHTML = renderRatingMeter(averageValue);
 
-    const totalCount = document.getElementById('testimonialTotalCount');
-    const averageRating = document.getElementById('testimonialAverageRating');
-
-    if (totalCount) {
-        totalCount.textContent = allTestimonials.length;
-    }
-
-    if (averageRating && allTestimonials.length) {
-        const average = allTestimonials.reduce((sum, testimonial) => sum + Number(testimonial.rating || 0), 0) / allTestimonials.length;
-        averageRating.textContent = average.toFixed(1);
-    }
-
-    testimonialsGrid.innerHTML = allTestimonials.map((testimonial, index) => `
-        <article class="testimonial-card ${index === 0 ? 'is-featured' : ''}" data-testimonial="${testimonial.id}" data-platform="${escapeHTML((testimonial.platform || '').toLowerCase())}">
-            <div class="testimonial-card-top">
-                <span class="testimonial-platform">${escapeHTML(testimonial.platform)}</span>
-                <span class="testimonial-number">${String(index + 1).padStart(2, '0')}</span>
-            </div>
-            <div class="testimonial-rating" aria-label="${escapeHTML(testimonial.rating)} out of 5 rating">
-                ${renderRatingMeter(testimonial.rating)}
-                <strong>${Number(testimonial.rating || 0).toFixed(1)}</strong>
-            </div>
-            <h3 dir="auto">${escapeHTML(testimonial.projectTitle)}</h3>
-            <p class="testimonial-summary">${escapeHTML(testimonial.summary)}</p>
-            <blockquote>${escapeHTML(testimonial.quote)}</blockquote>
-            <div class="testimonial-meta-grid">
-                <div>
-                    <span>Client</span>
-                    <strong>${escapeHTML(testimonial.clientName)}</strong>
-                </div>
-                <div>
-                    <span>Category</span>
-                    <strong>${escapeHTML(testimonial.category)}</strong>
-                </div>
-                <div>
-                    <span>Timeline</span>
-                    <strong>${escapeHTML(testimonial.completedIn)}</strong>
-                </div>
-            </div>
-            <button class="testimonial-image-button" type="button" data-testimonial="${testimonial.id}" aria-label="Open ${escapeHTML(testimonial.clientName)} testimonial image">
-                <img src="${escapeHTML(testimonial.image)}" alt="${escapeHTML(testimonial.platform)} testimonial from ${escapeHTML(testimonial.clientName)}" loading="lazy" />
-                <span>View original screenshot</span>
-            </button>
-        </article>
+    clients.style.setProperty('--review-columns', Math.min(Math.max(allTestimonials.length, 1), 2));
+    clients.innerHTML = allTestimonials.map((review, index) => `
+        <button type="button" class="testimonial-client-tab ${index === 0 ? 'is-active' : ''}"
+            id="review-tab-${review.id}" data-review-index="${index}"
+            style="--testimonial-accent: ${getTestimonialAccent(review.platform)}"
+            role="tab" aria-selected="${index === 0}" aria-controls="testimonialSpotlight"
+            tabindex="${index === 0 ? 0 : -1}">
+            <span class="testimonial-client-index">${String(index + 1).padStart(2, '0')}</span>
+            <span class="testimonial-client-tab-copy">
+                <strong>${escapeHTML(review.clientName)}</strong>
+                <span>${escapeHTML(review.category)}</span>
+            </span>
+            <span class="testimonial-client-tab-arrow">${projectArrowIcon()}</span>
+        </button>
     `).join('');
 
-    testimonialsGrid.querySelectorAll('.testimonial-image-button').forEach(button => {
-        button.addEventListener('click', () => {
-            openTestimonialViewer(Number(button.dataset.testimonial));
+    const tabs = [...clients.querySelectorAll('[data-review-index]')];
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectTestimonial(index));
+        tab.addEventListener('keydown', event => {
+            if (event.altKey || event.ctrlKey || event.metaKey) return;
+            if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+            event.preventDefault();
+            const nextIndex = event.key === 'Home' ? 0
+                : event.key === 'End' ? tabs.length - 1
+                : (index + (['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1) + tabs.length) % tabs.length;
+            selectTestimonial(nextIndex);
+            tabs[nextIndex].focus();
         });
     });
+
+    document.querySelector('[data-review-previous]').onclick = () => selectTestimonial(activeTestimonialIndex - 1);
+    document.querySelector('[data-review-next]').onclick = () => selectTestimonial(activeTestimonialIndex + 1);
+
+    let swipeStart = null;
+    spotlight.onpointerdown = event => {
+        if (event.pointerType !== 'mouse' && event.isPrimary) {
+            swipeStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
+        }
+    };
+    spotlight.onpointerup = event => {
+        const start = swipeStart;
+        swipeStart = null;
+        if (!start || start.id !== event.pointerId) return;
+        const dx = event.clientX - start.x;
+        const dy = event.clientY - start.y;
+        if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+            selectTestimonial(activeTestimonialIndex + (dx < 0 ? 1 : -1));
+        }
+    };
+    spotlight.onpointercancel = () => { swipeStart = null; };
+    selectTestimonial(0);
+}
+
+function selectTestimonial(index) {
+    if (!allTestimonials.length) return;
+    index = Math.max(0, Math.min(allTestimonials.length - 1, index));
+    const spotlight = document.getElementById('testimonialSpotlight');
+    const review = allTestimonials[index];
+    if (!spotlight || spotlight.dataset.review === String(review.id)) return;
+
+    activeTestimonialIndex = index;
+    const accent = getTestimonialAccent(review.platform);
+    const rating = Math.max(0, Math.min(5, Number(review.rating) || 0));
+    spotlight.dataset.review = review.id;
+    spotlight.style.setProperty('--testimonial-accent', accent);
+    spotlight.setAttribute('aria-labelledby', `review-tab-${review.id}`);
+    document.getElementById('testimonials').style.setProperty('--testimonial-accent', accent);
+    spotlight.innerHTML = `
+        <div class="testimonial-quote-panel testimonial-reveal">
+            <div class="testimonial-topline">
+                <span class="testimonial-platform"><i class="testimonial-platform-dot" aria-hidden="true"></i>${escapeHTML(review.platform)}</span>
+                <div class="testimonial-rating" role="img" aria-label="${rating} out of 5 stars">
+                    ${renderRatingMeter(rating)}
+                    <strong>${rating.toFixed(1)}<span> / 5</span></strong>
+                </div>
+            </div>
+            <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+            <blockquote class="testimonial-quote"><p dir="auto">${escapeHTML(review.quote)}</p></blockquote>
+            <div class="testimonial-author">
+                <span class="testimonial-avatar" aria-hidden="true">${escapeHTML(getClientInitials(review.clientName))}</span>
+                <div>
+                    <strong class="testimonial-client-name">${escapeHTML(review.clientName)}</strong>
+                    <span class="testimonial-client-role">Client on ${escapeHTML(review.platform)}</span>
+                </div>
+            </div>
+            <p class="testimonial-summary">${escapeHTML(review.summary)}</p>
+        </div>
+        <div class="testimonial-project-panel testimonial-reveal">
+            <div class="testimonial-context">
+                <span class="testimonial-label">The project</span>
+                <h3 id="testimonialProjectTitle" dir="auto">${escapeHTML(review.projectTitle)}</h3>
+                <dl class="testimonial-facts">
+                    <div><dt>Category</dt><dd>${escapeHTML(review.category)}</dd></div>
+                    <div><dt>Timeline</dt><dd>${escapeHTML(review.completedIn)}</dd></div>
+                </dl>
+            </div>
+            <button type="button" class="testimonial-source" aria-label="Read the original ${escapeHTML(review.platform)} review from ${escapeHTML(review.clientName)}">
+                <span class="testimonial-source-top">
+                    <span class="testimonial-source-platform">From ${escapeHTML(review.platform)}</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" /></svg>
+                </span>
+                <span class="testimonial-source-image">
+                    <img src="${escapeHTML(review.image)}" alt="Original ${escapeHTML(review.platform)} feedback from ${escapeHTML(review.clientName)}"
+                        width="${review.id === 2 ? 892 : 899}" height="${review.id === 2 ? 502 : 504}" loading="lazy" decoding="async" />
+                </span>
+                <span class="testimonial-source-bottom"><span>Read original feedback</span>${projectArrowIcon()}</span>
+            </button>
+        </div>
+    `;
+
+    document.querySelectorAll('#testimonialClients [data-review-index]').forEach(tab => {
+        const active = Number(tab.dataset.reviewIndex) === index;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+    });
+    document.querySelector('[data-review-current]').textContent = String(index + 1).padStart(2, '0');
+    document.querySelector('[data-review-total]').textContent = String(allTestimonials.length).padStart(2, '0');
+    document.querySelector('[data-review-previous]').disabled = index === 0;
+    document.querySelector('[data-review-next]').disabled = index === allTestimonials.length - 1;
+    document.getElementById('testimonialStatus').textContent =
+        `Review ${index + 1} of ${allTestimonials.length}. ${review.clientName}, ${review.platform}, ${rating} out of 5 stars.`;
+    spotlight.querySelector('.testimonial-source').addEventListener('click', () => openTestimonialViewer(review.id));
+}
+
+function projectArrowIcon(direction = 'diagonal') {
+    const path = direction === 'left' ? 'M15 6 9 12l6 6'
+        : direction === 'right' ? 'm9 6 6 6-6 6'
+        : 'M6 18 18 6M6 6h12v12';
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + path + '"/></svg>';
 }
 
 function renderWorksFilters() {
     const filtersContainer = document.getElementById('worksFilters');
     if (!filtersContainer) return;
 
-    const availableFilters = new Set(allProjects.map(project => getProjectMeta(project).filter));
-    const filtersToRender = worksFilters.filter(filter => availableFilters.has(filter.id));
-
-    filtersContainer.innerHTML = filtersToRender.map(filter => `
-        <button
-            type="button"
-            class="works-filter ${filter.id === activeWorksFilter ? 'active' : ''}"
-            data-filter="${filter.id}"
-            aria-pressed="${filter.id === activeWorksFilter}"
-        >
-            ${escapeHTML(filter.label)}
-        </button>
-    `).join('');
+    filtersContainer.innerHTML = worksFilters.map(filter => {
+        const count = allProjects.filter(project => getProjectMeta(project).filter === filter.id).length;
+        if (!count) return '';
+        return `
+            <button
+                type="button"
+                class="works-filter ${filter.id === activeWorksFilter ? 'active' : ''}"
+                style="--filter-accent: ${escapeHTML(filter.accent)}"
+                data-filter="${filter.id}"
+                aria-pressed="${filter.id === activeWorksFilter}"
+                aria-controls="workSpotlight projectIndex"
+                aria-label="${escapeHTML(filter.label)}, ${count} ${count === 1 ? 'project' : 'projects'}"
+            >
+                <span class="works-filter-dot" aria-hidden="true"></span>
+                ${escapeHTML(filter.label)}
+                <span class="works-filter-count" aria-hidden="true">${String(count).padStart(2, '0')}</span>
+            </button>
+        `;
+    }).join('');
 
     filtersContainer.querySelectorAll('.works-filter').forEach(button => {
         button.addEventListener('click', () => {
+            if (activeWorksFilter === button.dataset.filter) return;
             activeWorksFilter = button.dataset.filter;
-            renderWorksFilters();
-            renderWorksCards();
+            const firstProject = getVisibleProjects()[0];
+            activeSpotlightProjectId = firstProject?.id ?? null;
 
-            const firstVisibleProject = getVisibleProjects()[0];
-            if (firstVisibleProject) {
-                updateWorksSpotlight(firstVisibleProject.id);
-            }
+            // Keep the category button in place so keyboard focus is retained.
+            filtersContainer.querySelectorAll('.works-filter').forEach(filterButton => {
+                const active = filterButton.dataset.filter === activeWorksFilter;
+                filterButton.classList.toggle('active', active);
+                filterButton.setAttribute('aria-pressed', String(active));
+            });
+            renderProjectIndex();
+            if (firstProject) updateWorksSpotlight(firstProject.id);
         });
     });
 }
 
-function renderWorksCards() {
-    const worksGrid = document.getElementById('carouselTrack');
-    const worksCounter = document.getElementById('worksCounter');
-    if (!worksGrid) return;
+function renderProjectIndex() {
+    const indexContainer = document.getElementById('projectIndex');
+    if (!indexContainer) return;
 
     const visibleProjects = getVisibleProjects();
+    const label = worksFilters.find(filter => filter.id === activeWorksFilter)?.label || 'Projects';
+    const countLabel = `${String(visibleProjects.length).padStart(2, '0')} ${visibleProjects.length === 1 ? 'project' : 'projects'}`;
+    const counter = document.getElementById('worksCounter');
+    const collectionCount = document.getElementById('projectCollectionCount');
+    if (counter) counter.textContent = `${label} / ${countLabel}`;
+    if (collectionCount) collectionCount.textContent = countLabel;
+    indexContainer.style.setProperty('--project-columns', Math.min(visibleProjects.length, 3));
 
-    if (worksCounter) {
-        const activeFilterLabel = worksFilters.find(filter => filter.id === activeWorksFilter)?.label || 'Projects';
-        const projectLabel = visibleProjects.length === 1 ? 'project' : 'projects';
-        worksCounter.textContent = `${visibleProjects.length} ${projectLabel} in ${activeFilterLabel}`;
-    }
-
-    worksGrid.innerHTML = visibleProjects.map((project, index) => {
+    indexContainer.innerHTML = visibleProjects.map(project => {
         const meta = getProjectMeta(project);
-        const isActive = activeSpotlightProjectId === project.id || (!activeSpotlightProjectId && index === 0);
-
+        const active = activeSpotlightProjectId === project.id;
         return `
-            <article
-                class="work-item fadeInUp ${isActive ? 'is-active' : ''}"
+            <button
+                type="button"
+                class="project-index-item ${active ? 'is-active' : ''}"
+                id="project-tab-${project.id}"
+                style="--project-accent: ${escapeHTML(meta.accent)}"
                 data-project="${project.id}"
-                role="button"
-                tabindex="0"
-                aria-label="Open ${escapeHTML(project.name)} project"
+                role="tab"
+                aria-selected="${active}"
+                aria-controls="workSpotlight"
+                tabindex="${active ? 0 : -1}"
             >
-                <div class="work-image-wrapper">
-                    <img src="${escapeHTML(project.thumbnail)}" alt="${escapeHTML(project.name)}" class="work-thumbnail" loading="lazy" />
-                    <span class="work-index">${String(index + 1).padStart(2, '0')}</span>
-                    <span class="work-category">${escapeHTML(meta.category)}</span>
-                </div>
-                <div class="work-card-body">
-                    <h3>${escapeHTML(project.name)}</h3>
-                    <p>${escapeHTML(project.shortDescription)}</p>
-                    <div class="work-focus">${escapeHTML(meta.focus)}</div>
-                    <div class="work-tech-list">
-                        ${renderTechPills(project, 3)}
-                    </div>
-                </div>
-                <div class="work-card-footer">
-                    <span>Case study</span>
-                    <button type="button" class="work-view-btn" data-project="${project.id}">Explore</button>
-                </div>
-            </article>
+                <span class="project-index-number">${String(getProjectPosition(project.id)).padStart(2, '0')}</span>
+                <span class="project-index-copy">
+                    <strong>${escapeHTML(project.name)}</strong>
+                    <span>${escapeHTML(project.shortDescription)}</span>
+                </span>
+                <span class="project-index-arrow">${projectArrowIcon()}</span>
+            </button>
         `;
     }).join('');
 
-    worksGrid.querySelectorAll('.work-item').forEach(card => {
-        const projectId = Number(card.dataset.project);
-        const project = projectsData[projectId];
-        const meta = getProjectMeta(project);
-
-        card.style.setProperty('--project-accent', meta.accent);
-        card.style.setProperty('--work-bg-image', `url("${project.thumbnail}")`);
-
-        card.addEventListener('mouseenter', () => updateWorksSpotlight(projectId));
-        card.addEventListener('focus', () => updateWorksSpotlight(projectId));
-        card.addEventListener('click', () => openProjectModal(projectId));
-        card.addEventListener('keydown', event => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                openProjectModal(projectId);
-            }
-        });
-    });
-
-    worksGrid.querySelectorAll('.work-view-btn').forEach(button => {
-        button.addEventListener('click', event => {
-            event.stopPropagation();
-            openProjectModal(Number(button.dataset.project));
+    const tabs = [...indexContainer.querySelectorAll('.project-index-item')];
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => updateWorksSpotlight(Number(tab.dataset.project)));
+        tab.addEventListener('keydown', event => {
+            if (event.altKey || event.ctrlKey || event.metaKey) return;
+            if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+            event.preventDefault();
+            const nextIndex = event.key === 'Home' ? 0
+                : event.key === 'End' ? tabs.length - 1
+                : (index + (['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1) + tabs.length) % tabs.length;
+            const nextTab = tabs[nextIndex];
+            updateWorksSpotlight(Number(nextTab.dataset.project));
+            nextTab.focus();
         });
     });
 }
@@ -284,55 +392,124 @@ function renderWorksCards() {
 function updateWorksSpotlight(projectId) {
     const spotlight = document.getElementById('workSpotlight');
     const project = projectsData[projectId];
-    if (!spotlight || !project) return;
+    if (!spotlight || !project || spotlight.dataset.project === String(projectId)) return;
 
     const meta = getProjectMeta(project);
+    const presentation = projectPresentations[project.id] || {};
     const projectLink = getProjectLink(project);
-    const galleryImages = [project.thumbnail, ...(project.images || [])]
-        .filter(Boolean)
-        .filter((image, index, images) => images.indexOf(image) === index)
-        .slice(0, 4);
+    const galleryImages = getProjectImages(project);
+    const position = String(getProjectPosition(projectId)).padStart(2, '0');
+    const total = String(allProjects.length).padStart(2, '0');
 
     activeSpotlightProjectId = projectId;
+    spotlight.dataset.project = projectId;
+    spotlight.dataset.previewIndex = '0';
+    spotlight.setAttribute('aria-labelledby', `project-tab-${projectId}`);
     spotlight.style.setProperty('--project-accent', meta.accent);
-    spotlight.style.setProperty('--work-bg-image', `url("${project.thumbnail}")`);
+    const section = document.getElementById('projects');
+    section.style.setProperty('--project-accent', meta.accent);
+    section.dataset.category = meta.filter;
 
     spotlight.innerHTML = `
-        <div class="spotlight-copy">
-            <span class="spotlight-kicker">${escapeHTML(meta.category)}</span>
-            <h3>${escapeHTML(project.name)}</h3>
-            <p>${escapeHTML(meta.result)}</p>
-            <div class="spotlight-focus">
-                <span>${escapeHTML(meta.focus)}</span>
+        <span class="project-watermark" aria-hidden="true">${position}</span>
+        <div class="project-story project-reveal">
+            <div class="project-kicker">
+                <span class="project-category"><i class="project-color-dot" aria-hidden="true"></i>${escapeHTML(meta.category)}</span>
+                <span class="project-position">${position} / ${total}</span>
             </div>
-            <div class="spotlight-tech">
-                ${renderTechPills(project, 5, 'spotlight-tech-pill')}
+            <h3 id="spotlightTitle">${escapeHTML(project.name)}</h3>
+            <p class="project-subtitle">${escapeHTML(project.shortDescription)}</p>
+            <p class="project-summary">${escapeHTML(meta.result)}</p>
+            <div class="project-focus">
+                <span class="project-detail-label">Focus</span>
+                <p>${escapeHTML(meta.focus)}</p>
             </div>
-            <div class="spotlight-actions">
-                <button type="button" class="work-view-btn spotlight-view" data-project="${project.id}">View Case Study</button>
-                ${projectLink ? `<a class="spotlight-link" href="${escapeHTML(projectLink)}" target="_blank" rel="noopener noreferrer">Open Live</a>` : ''}
+            <div class="project-stack">
+                <span class="project-detail-label">Built with</span>
+                <div class="project-tech">
+                    ${(project.techStack || []).map(tech => `<span class="project-tech-item">${escapeHTML(tech)}</span>`).join('')}
+                </div>
+            </div>
+            <div class="project-actions">
+                <button type="button" class="project-case-study">Explore project ${projectArrowIcon()}</button>
+                ${projectLink ? `<a class="project-external" href="${escapeHTML(projectLink)}" target="_blank" rel="noopener noreferrer">${projectLink.includes('github.com') ? 'View repository' : 'Visit website'} ${projectArrowIcon()}</a>` : ''}
             </div>
         </div>
-        <div class="spotlight-media">
-            <div class="spotlight-screen">
-                <img src="${escapeHTML(project.thumbnail)}" alt="${escapeHTML(project.name)} preview" loading="eager" />
-            </div>
-            <div class="spotlight-strip">
-                ${galleryImages.slice(1).map((image, index) => `
-                    <img src="${escapeHTML(image)}" alt="${escapeHTML(project.name)} gallery preview ${index + 1}" loading="eager" />
-                `).join('')}
+        <div class="project-visual project-reveal" ${presentation.detail ? 'data-has-detail="true"' : ''}>
+            <div class="project-orbit" aria-hidden="true"></div>
+            <span class="project-visual-cross project-visual-cross--one" aria-hidden="true"></span>
+            <span class="project-visual-cross project-visual-cross--two" aria-hidden="true"></span>
+            <button type="button" class="project-preview" aria-label="Open ${escapeHTML(project.name)} screenshot gallery">
+                <span class="project-browser">
+                    <span class="project-browser-bar">
+                        <span class="project-browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="project-browser-label">${escapeHTML(project.name)}</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>
+                    </span>
+                    <span class="project-browser-screen">
+                        <img class="project-preview-image" data-project-preview-main src="${escapeHTML(galleryImages[0])}" alt="${escapeHTML(project.name)} — screenshot 1 of ${galleryImages.length}" loading="eager" decoding="async" />
+                    </span>
+                </span>
+                <span class="project-preview-hint">View gallery ${projectArrowIcon()}</span>
+            </button>
+            ${presentation.detail ? `
+                <span class="project-detail-preview" data-device="${presentation.device}" style="--device-ratio: ${presentation.ratio}" aria-hidden="true">
+                    <img src="${escapeHTML(presentation.detail)}" alt="" loading="lazy" decoding="async" />
+                    <span class="project-detail-caption">${presentation.device === 'extension' ? 'Extension' : 'Mobile view'}</span>
+                </span>
+            ` : ''}
+            <div class="project-view-controls">
+                <div class="project-view-caption"><span data-project-view-count aria-live="polite" aria-atomic="true">01 / ${String(galleryImages.length).padStart(2, '0')}</span><span>Screens</span></div>
+                <div class="project-view-dots" role="group" aria-label="Choose a project screenshot">
+                    ${galleryImages.map((image, index) => `<button type="button" class="project-view-dot ${index === 0 ? 'is-active' : ''}" data-image-index="${index}" aria-label="Show screenshot ${index + 1}" aria-pressed="${index === 0}"></button>`).join('')}
+                </div>
+                ${galleryImages.length > 1 ? `
+                    <div class="project-view-arrows">
+                        <button type="button" class="project-view-arrow" data-project-image-step="-1" aria-label="Previous screenshot">${projectArrowIcon('left')}</button>
+                        <button type="button" class="project-view-arrow" data-project-image-step="1" aria-label="Next screenshot">${projectArrowIcon('right')}</button>
+                    </div>
+                ` : ''}
             </div>
         </div>
     `;
 
-    document.querySelectorAll('.work-item').forEach(card => {
-        card.classList.toggle('is-active', Number(card.dataset.project) === projectId);
+    document.querySelectorAll('#projectIndex .project-index-item').forEach(tab => {
+        const active = Number(tab.dataset.project) === projectId;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
     });
+    const status = document.getElementById('projectStatus');
+    if (status) status.textContent = `${project.name}, ${meta.category}. ${galleryImages.length} screenshots available.`;
 
-    const viewButton = spotlight.querySelector('.spotlight-view');
-    if (viewButton) {
-        viewButton.addEventListener('click', () => openProjectModal(projectId));
-    }
+    const showScreenshot = index => {
+        index = (index + galleryImages.length) % galleryImages.length;
+        spotlight.dataset.previewIndex = index;
+        const image = spotlight.querySelector('[data-project-preview-main]');
+        image.src = galleryImages[index];
+        image.alt = `${project.name} — screenshot ${index + 1} of ${galleryImages.length}`;
+        spotlight.querySelector('[data-project-view-count]').textContent =
+            `${String(index + 1).padStart(2, '0')} / ${String(galleryImages.length).padStart(2, '0')}`;
+        spotlight.querySelectorAll('.project-view-dot').forEach(dot => {
+            const active = Number(dot.dataset.imageIndex) === index;
+            dot.classList.toggle('is-active', active);
+            dot.setAttribute('aria-pressed', String(active));
+        });
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            image.animate([{ opacity: 0.35 }, { opacity: 1 }], { duration: 280, easing: 'ease-out' });
+        }
+    };
+
+    spotlight.querySelectorAll('[data-image-index]').forEach(dot => {
+        dot.addEventListener('click', () => showScreenshot(Number(dot.dataset.imageIndex)));
+    });
+    spotlight.querySelectorAll('[data-project-image-step]').forEach(button => {
+        button.addEventListener('click', () => showScreenshot(
+            Number(spotlight.dataset.previewIndex) + Number(button.dataset.projectImageStep)));
+    });
+    spotlight.querySelectorAll('.project-case-study, .project-preview').forEach(button => {
+        button.addEventListener('click', () => openProjectModal(projectId, Number(spotlight.dataset.previewIndex)));
+    });
 }
 
 window.addEventListener('load', () => {
@@ -555,7 +732,7 @@ function updateModalImageCount() {
     imageCount.textContent = `${current} / ${total}`;
 }
 
-function openProjectModal(projectId) {
+function openProjectModal(projectId, imageIndex = 0) {
     const modal = document.getElementById('projectModal');
     const project = projectsData[projectId];
     
@@ -564,9 +741,7 @@ function openProjectModal(projectId) {
     const meta = getProjectMeta(project);
     const projectPosition = getProjectPosition(projectId);
     const projectType = worksFilters.find(filter => filter.id === meta.filter)?.label || meta.category;
-    const modalImages = [project.thumbnail, ...(project.images || [])]
-        .filter(Boolean)
-        .filter((image, index, images) => images.indexOf(image) === index);
+    const modalImages = getProjectImages(project);
 
     modal.style.setProperty('--project-accent', meta.accent);
     
@@ -598,13 +773,13 @@ function openProjectModal(projectId) {
     });
     
     currentProjectImages = modalImages;
-    currentSlideIndex = 0;
+    currentSlideIndex = Math.max(0, Math.min(modalImages.length - 1, imageIndex));
     setupCarousel();
     updateModalImageCount();
     
     const carousel = document.querySelector('.modal-carousel');
     if (carousel && currentProjectImages.length > 0) {
-        carousel.style.setProperty('--modal-bg-image', `url(${currentProjectImages[0]})`);
+        carousel.style.setProperty('--modal-bg-image', `url(${currentProjectImages[currentSlideIndex]})`);
     }
     
     modal.classList.add('active');
@@ -626,6 +801,8 @@ function openTestimonialViewer(testimonialId) {
 
     if (!viewer || !image || !testimonial) return;
 
+    testimonialViewerTrigger = document.activeElement;
+    viewer.style.setProperty('--testimonial-accent', getTestimonialAccent(testimonial.platform));
     image.src = testimonial.image;
     image.alt = `${testimonial.platform} testimonial from ${testimonial.clientName}`;
 
@@ -640,6 +817,17 @@ function openTestimonialViewer(testimonialId) {
     viewer.classList.add('active');
     viewer.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    const closeButton = viewer.querySelector('.testimonial-viewer-close');
+    closeButton.focus({ preventScroll: true });
+    viewer.onkeydown = event => {
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            closeTestimonialViewer();
+        } else if (event.key === 'Tab') {
+            event.preventDefault();
+            closeButton.focus({ preventScroll: true });
+        }
+    };
 }
 
 function closeTestimonialViewer() {
@@ -650,12 +838,17 @@ function closeTestimonialViewer() {
 
     viewer.classList.remove('active');
     viewer.setAttribute('aria-hidden', 'true');
+    viewer.onkeydown = null;
 
     if (image) {
         image.src = '';
     }
 
     document.body.style.overflow = '';
+    if (testimonialViewerTrigger?.isConnected) {
+        testimonialViewerTrigger.focus({ preventScroll: true });
+    }
+    testimonialViewerTrigger = null;
 }
 
 function setupCarousel() {
@@ -668,7 +861,7 @@ function setupCarousel() {
     currentProjectImages.forEach((imageSrc, index) => {
         const slide = document.createElement('div');
         slide.className = 'carousel-slide';
-        if (index === 0) slide.classList.add('active');
+        if (index === currentSlideIndex) slide.classList.add('active');
         
         const img = document.createElement('img');
         img.src = imageSrc;
@@ -681,7 +874,7 @@ function setupCarousel() {
         indicator.type = 'button';
         indicator.className = 'indicator-dot';
         indicator.setAttribute('aria-label', `Show project image ${index + 1}`);
-        if (index === 0) indicator.classList.add('active');
+        if (index === currentSlideIndex) indicator.classList.add('active');
         indicator.addEventListener('click', () => goToSlideModal(index));
         indicatorsContainer.appendChild(indicator);
     });
@@ -734,20 +927,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     Utils.initButtonActions();
     Utils.initFormSubmission();
 
-    // Experience accordion
-    document.querySelectorAll('.experience-item').forEach(item => {
-        const card = item.querySelector('.experience-card');
-        if (!card) return;
-        card.addEventListener('click', () => {
-            const isOpen = item.classList.contains('is-open');
-            // Close all
-            document.querySelectorAll('.experience-item.is-open').forEach(openItem => {
-                openItem.classList.remove('is-open');
-            });
-            // Toggle clicked (if it was closed, open it)
-            if (!isOpen) {
-                item.classList.add('is-open');
-            }
-        });
-    });
 });

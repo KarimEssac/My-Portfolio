@@ -39,7 +39,7 @@
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-primary);
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-family);
 }
 
 .dots::after {
