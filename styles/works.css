@@ -822,9 +822,9 @@
     .project-summary { font-size: 0.9rem; }
     .project-focus,
     .project-stack { grid-template-columns: 58px minmax(0, 1fr); gap: 0.45rem; }
-    .project-actions { align-items: stretch; flex-direction: column; width: 100%; }
+    .project-actions { align-items: stretch; flex-wrap: nowrap; gap: 0.5rem; width: 100%; }
     .project-case-study,
-    .project-external { justify-content: space-between; width: 100%; }
+    .project-external { flex: 1; min-width: 0; gap: 0.35rem; padding-inline: 0.55rem; font-size: 0.75rem; }
     .project-browser-bar { height: 34px; padding-inline: 0.65rem; }
     .project-browser-dots { gap: 3px; }
     .project-browser-dots i { width: 5px; height: 5px; }

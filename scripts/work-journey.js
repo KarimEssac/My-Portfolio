@@ -131,7 +131,10 @@
             this.cancelSnap();
             const navHeight = this.navbar?.getBoundingClientRect().height || 70;
             const availableHeight = window.innerHeight - navHeight;
-            this.mode = this.motion.matches ? 'stacked' : availableHeight < 640 ? 'native' : 'pinned';
+            // Phone scrolling and browser chrome changes must not advance chapters.
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            this.mode = this.motion.matches ? 'stacked'
+                : isMobile || availableHeight < 640 ? 'native' : 'pinned';
             this.navHeight = navHeight;
             this.section.style.setProperty('--journey-nav-height', `${navHeight}px`);
             this.section.style.setProperty('--journey-height', `${availableHeight}px`);
