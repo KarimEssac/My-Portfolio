@@ -554,7 +554,7 @@
 }
 
 /* Each chapter shares the same stage. The exit finishes before the entrance begins. */
-.work-journey[data-scroll-mode="pinned"] .journey-sticky {
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="mobile"]) .journey-sticky {
     position: sticky;
     top: var(--journey-nav-height);
     height: var(--journey-height);
@@ -566,27 +566,27 @@
 
 .work-journey[data-scroll-mode] .journey-arrows { display: flex; }
 
-.work-journey[data-scroll-mode="pinned"] :is(.journey-header, .journey-timeline) {
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="mobile"]) :is(.journey-header, .journey-timeline) {
     flex-shrink: 0;
     margin-block: 0;
 }
 
-.work-journey[data-scroll-mode="pinned"] .journey-viewport { flex: 1; min-height: 0; }
-.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"]) .journey-viewport { overflow: hidden; touch-action: pan-y pinch-zoom; }
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="mobile"]) .journey-viewport { flex: 1; min-height: 0; }
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"], [data-scroll-mode="mobile"]) .journey-viewport { overflow: hidden; touch-action: pan-y pinch-zoom; }
 
-.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"]) .journey-track {
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"], [data-scroll-mode="mobile"]) .journey-track {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
     isolation: isolate;
 }
 
-.work-journey[data-scroll-mode="pinned"] .journey-track {
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="mobile"]) .journey-track {
     height: 100%;
     grid-template-rows: minmax(0, 1fr);
 }
 
-.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"]) .journey-panel {
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"], [data-scroll-mode="mobile"]) .journey-panel {
     grid-area: 1 / 1;
     width: 100%;
     opacity: 0;
@@ -595,14 +595,14 @@
     transform: translateX(var(--journey-enter));
 }
 
-.work-journey[data-scroll-mode="pinned"] .journey-panel { min-height: 0; height: 100%; }
-.work-journey[data-scroll-mode="pinned"] .journey-art { min-height: 0; }
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="mobile"]) .journey-panel { min-height: 0; height: 100%; }
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="mobile"]) .journey-art { min-height: 0; }
 
-.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"]) .journey-panel.is-leaving {
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"], [data-scroll-mode="mobile"]) .journey-panel.is-leaving {
     transform: translateX(var(--journey-exit));
 }
 
-.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"]) .journey-panel.is-active {
+.work-journey:is([data-scroll-mode="pinned"], [data-scroll-mode="native"], [data-scroll-mode="mobile"]) .journey-panel.is-active {
     z-index: 2;
     opacity: 1;
     visibility: visible;
@@ -610,11 +610,11 @@
     transform: translateX(0);
 }
 
-.work-journey.journey-animate:is([data-scroll-mode="pinned"], [data-scroll-mode="native"]) .journey-panel {
+.work-journey.journey-animate:is([data-scroll-mode="pinned"], [data-scroll-mode="native"], [data-scroll-mode="mobile"]) .journey-panel {
     transition: opacity 150ms ease, transform 180ms ease, visibility 0s linear 150ms;
 }
 
-.work-journey.journey-animate:is([data-scroll-mode="pinned"], [data-scroll-mode="native"]) .journey-panel.is-active {
+.work-journey.journey-animate:is([data-scroll-mode="pinned"], [data-scroll-mode="native"], [data-scroll-mode="mobile"]) .journey-panel.is-active {
     transition: opacity 190ms ease 180ms, transform 260ms ease 180ms, visibility 0s linear 180ms;
 }
 
@@ -628,7 +628,7 @@
     transition: width 600ms ease;
 }
 
-@media (min-width: 761px) and (max-height: 820px) {
+@media (min-width: 769px) and (max-height: 820px) {
     .journey-header-description { display: none; }
     .journey-company { font-size: clamp(2.5rem, 4.5vw, 4rem); }
     .journey-meta { margin-bottom: 10px; }
@@ -647,7 +647,7 @@
     .journey-navigation { gap: 0.8rem; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
     .work-journey { --journey-gutter: 22px; --journey-enter: 24px; --journey-exit: -24px; }
     .work-journey[data-direction="backward"] { --journey-enter: -24px; --journey-exit: 24px; }
     .journey-header { align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
@@ -692,6 +692,29 @@
     .work-journey[data-scroll-mode="pinned"] .journey-copy { flex-shrink: 0; }
     .work-journey[data-scroll-mode="pinned"] .journey-contributions { display: none; }
     .work-journey[data-scroll-mode="native"] .journey-panel { justify-content: flex-start; }
+
+    .work-journey[data-scroll-mode="mobile"] .journey-sticky { gap: 14px; padding-top: 18px; padding-bottom: 12px; }
+    .work-journey[data-scroll-mode="mobile"] .journey-panel {
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+    .work-journey[data-scroll-mode="mobile"] .journey-art {
+        flex: none;
+        height: clamp(140px, 22svh, 200px);
+        min-height: 140px;
+    }
+    .work-journey[data-scroll-mode="mobile"] .journey-copy { flex-shrink: 0; }
+}
+
+@media (max-width: 768px) and (max-height: 600px) {
+    .work-journey[data-scroll-mode="mobile"] .journey-sticky { gap: 8px; padding-block: 10px; }
+    .work-journey[data-scroll-mode="mobile"] .journey-header .journey-eyebrow { display: none; }
+    .work-journey[data-scroll-mode="mobile"] .journey-title { font-size: 1.8rem; }
+    .work-journey[data-scroll-mode="mobile"] .journey-timeline-grid { display: none; }
+    .work-journey[data-scroll-mode="mobile"] .journey-timeline { padding-top: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
